@@ -21,12 +21,16 @@ Install Git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
 - Make a new folder and open it in your IDE (e.g. Visual Studio Code)
 - Open a terminal and run `git --version` and `gh --version` to ensure both were installed successfully
+
+_(From here on you should be in the correct working directory)_
 - Run `gh auth login`
     - Select `HTTPS` and `open in browser` where asked.
 - Run `gh repo clone <yourUsername>/PA5`. This will create a new folder named PA5 with all the content. This is the forked repo.
 - Run `make commit M="your message"` to commit & push your changes to your forked repository. 
     - If this doesn't work, try `git add . && git commit -m "your message" && git push origin main`
 - You then create a pull request on Github.com or Github Desktop from your forked repository ("Contribute" or simply "Pull requests").
+
+For a start try adding your email address to the Readme file in your IDE, then commit and pull-request it to see if everything works.
 
 ## Email Addresses
 Iwan de Jong: u22498037@tuks.co.za
