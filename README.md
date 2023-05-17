@@ -23,14 +23,21 @@ Install Git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 - Open a terminal and run `git --version` and `gh --version` to ensure both were installed successfully
 
 _(From here on you should be in the correct working directory)_
-- Run `gh auth login`
-    - Select `HTTPS` and `open in browser` where asked.
-- Run `gh repo clone <yourUsername>/PA5`. This will create a new folder named PA5 with all the content. This is the forked repo.
+- Run `make setup U="username"` where username is your github username, select `HTTPS` and `open in browser` where asked.
 - Run `make commit M="your message"` to commit & push your changes to your forked repository. 
-    - If this doesn't work, try `git add . && git commit -m "your message" && git push origin main`
 - You then create a pull request on Github.com or Github Desktop from your forked repository ("Contribute" or simply "Pull requests").
 
 For a start try adding your email address to the Readme file in your IDE, then commit and pull-request it to see if everything works.
+
+## Get the latest contents
+Everytime you open your IDE, you can run `make sync`. This will sync all the files from Github onto your computer.
+
+## Make doesn't work
+If *make* doesn't work, use this:
+- Run `gh auth login`
+    - Select `HTTPS` and `open in browser` where asked.
+- Run `gh repo clone <yourUsername>/PA5`. This will create a new folder named PA5 with all the content. This is the forked repo.
+- If this doesn't work, try `git add . && git commit -m "your message" && git push origin main`
 
 ## Email Addresses
 Iwan de Jong: u22498037@tuks.co.za
