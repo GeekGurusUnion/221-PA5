@@ -27,7 +27,9 @@ _(From here on you should be in the correct working directory)_
 - `make commit M="your message"` to commit & push your changes to your forked repository. 
 - You then create a pull request on Github.com or Github Desktop from your forked repository ("Contribute" or simply "Pull requests").
 
-For a start try adding your email address to the Readme file in your IDE, then commit and pull-request it to see if everything works.
+```diff
+@@ For a start try adding your email address to the Readme file in your IDE, then commit and pull-request it to see if everything works.
+```
 
 ### Get the latest contents
 Everytime you open your IDE, you can run `make sync`. This will sync all the files from Github onto your computer.
@@ -45,13 +47,18 @@ If *make* doesn't work, use this:
 
 ### For committing
 - `git add . && git commit -m "your message" && git push origin main`
-- You then create a pull request on Github.com or Github Desktop from your forked repository ("Contribute" or simply "Pull requests").
+- You then create a pull request on Github.com or Github Desktop from your forked repository ("Contribute").
 
 ### For syncing
 - `git fetch upstream && git merge upstream/main`
 
+```diff
+! If your `&&` doesn't work, just split up the commands e.g. `git add .` then `git commit -m "your message"` etc.
+```
+
 ## Email Addresses
 Iwan de Jong: u22498037@tuks.co.za
+
 Stephan Smit: u21489476@tuks.co.za
 
 _add yours here_
