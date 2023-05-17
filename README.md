@@ -42,6 +42,7 @@ If *make* doesn't work, use this:
 
 ### For committing
 - `git add . && git commit -m "your message" && git push origin main`
+- You then create a pull request on Github.com or Github Desktop from your forked repository ("Contribute" or simply "Pull requests").
 
 ### For syncing
 - `git fetch upstream && git merge upstream/main`
