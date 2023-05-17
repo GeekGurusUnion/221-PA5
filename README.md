@@ -34,10 +34,17 @@ Everytime you open your IDE, you can run `make sync`. This will sync all the fil
 
 ## Make doesn't work
 If *make* doesn't work, use this:
+### For signing in
 - Run `gh auth login`
     - Select `HTTPS` and `open in browser` where asked.
-- Run `gh repo clone <yourUsername>/PA5`. This will create a new folder named PA5 with all the content. This is the forked repo.
-- If this doesn't work, try `git add . && git commit -m "your message" && git push origin main`
+- `gh repo clone <yourUsername>/PA5`. This will create a new folder named PA5 with all the content. This is the forked repo.
+- `git remote add upstream https://github.com/PA5G5/PA5.git`. This will set the upstream to the main repo.
+
+### For committing
+- `git add . && git commit -m "your message" && git push origin main`
+
+### For syncing
+- `git fetch upstream && git merge upstream/main`
 
 ## Email Addresses
 Iwan de Jong: u22498037@tuks.co.za
