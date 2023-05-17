@@ -14,7 +14,7 @@ You can add tasks yourselves, on the right-hand side you can assign people, sele
 
 Discussions is a place to discuss general stuff, but remember that Issues also have a discuss feature, so rather discuss on a specific topic (e.g. "Setup Github")
 
-### Github setup
+## Github Setup
 Install the Github CLI: https://cli.github.com/manual/installation
 
 Install Git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
@@ -23,13 +23,13 @@ Install Git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 - Open a terminal and run `git --version` and `gh --version` to ensure both were installed successfully
 
 _(From here on you should be in the correct working directory)_
-- Run `make setup U="username"` where username is your github username, select `HTTPS` and `open in browser` where asked.
-- Run `make commit M="your message"` to commit & push your changes to your forked repository. 
+- `make setup U="username"` where username is your github username, select `HTTPS` and `open in browser` where asked.
+- `make commit M="your message"` to commit & push your changes to your forked repository. 
 - You then create a pull request on Github.com or Github Desktop from your forked repository ("Contribute" or simply "Pull requests").
 
 For a start try adding your email address to the Readme file in your IDE, then commit and pull-request it to see if everything works.
 
-## Get the latest contents
+### Get the latest contents
 Everytime you open your IDE, you can run `make sync`. This will sync all the files from Github onto your computer.
 
 ## Make doesn't work
