@@ -14,6 +14,11 @@ You can add tasks yourselves, on the right-hand side you can assign people, sele
 
 Discussions is a place to discuss general stuff, but remember that Issues also have a discuss feature, so rather discuss on a specific topic (e.g. "Setup Github")
 
+```diff
++ Also be sure to "watch" the repository (right hand upper corner)
++ to receive notifications on the changes and new tasks.
+```
+
 ## Github Setup
 Install the Github CLI: https://cli.github.com/manual/installation
 
