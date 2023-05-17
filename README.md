@@ -32,6 +32,9 @@ For a start try adding your email address to the Readme file in your IDE, then c
 ### Get the latest contents
 Everytime you open your IDE, you can run `make sync`. This will sync all the files from Github onto your computer.
 
+### Pull Requests
+To make a pull request, go to your Forked Repository, then say Contribute (above the list the files).
+
 ## Make doesn't work
 If *make* doesn't work, use this:
 ### For signing in
