@@ -28,7 +28,7 @@ Install Git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
     - If this doesn't work, try `git add . && git commit -m "your message" && git push origin main`
 - You then create a pull request on Github.com or Github Desktop from your forked repository ("Contribute" or simply "Pull requests").
 
-# Email Addresses
+## Email Addresses
 Iwan de Jong: u22498037@tuks.co.za
 
 _add yours here_
