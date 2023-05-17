@@ -49,5 +49,6 @@ If *make* doesn't work, use this:
 
 ## Email Addresses
 Iwan de Jong: u22498037@tuks.co.za
+Stephan Smit: u21489476@tuks.co.za
 
 _add yours here_
