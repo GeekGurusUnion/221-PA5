@@ -59,6 +59,11 @@ If *make* doesn't work, use this:
 ! If your `&&` doesn't work, just split up the commands 
 e.g. `git add .` then `git commit -m "your message"` etc.
 ```
+## Database Connection
+
+Our cloud database runs on Google Cloud. You connect exactly the same way as you would with the other Practical Assignments, the connection details are in the "config.php". You can use it with any canned app such as MySQL Workbench. The only difference is when we start working on the database itself, there is no need to dump & upload the database to Github everytime, so it saves a lot of time. 
+
+If this doesn't work we'll revert to the traditional dump & send method.
 
 ## Email Addresses & Student Numbers
 Iwan de Jong (u22498037): u22498037@tuks.co.za
