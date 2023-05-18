@@ -1,5 +1,5 @@
 <?php
-echo "attempt connect";
+echo "Attempting to connect<br>";
 
 // Set your Google Cloud MySQL instance details
 $host = '34.69.121.100';
@@ -13,7 +13,11 @@ $connection = new mysqli($host, $username, $password, $database);
 // Check the connection
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
+} else {
+    echo "Connected successfully<br>";
 }
 
+// printf("System status: %s<br>", $connection->stat());
+// // $connection->select_db($database);
 
 ?>
