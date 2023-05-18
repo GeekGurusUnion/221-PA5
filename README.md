@@ -74,4 +74,6 @@ Stephan Smit (u21489476): u21489476@tuks.co.za
 
 Rebecca Oosthuizen (u20512008): u20512008@tuks.co.za
 
+Ashley Tullis (u22486985): u22486985@tuks.co.za
+
 _add yours here_
