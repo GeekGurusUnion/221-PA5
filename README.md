@@ -60,9 +60,9 @@ If *make* doesn't work, use this:
 e.g. `git add .` then `git commit -m "your message"` etc.
 ```
 
-## Email Addresses
-Iwan de Jong: u22498037@tuks.co.za
+## Email Addresses & Student Numbers
+Iwan de Jong (u22498037): u22498037@tuks.co.za
 
-Stephan Smit: u21489476@tuks.co.za
+Stephan Smit (u21489476): u21489476@tuks.co.za
 
 _add yours here_
