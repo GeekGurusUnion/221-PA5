@@ -65,4 +65,6 @@ Iwan de Jong (u22498037): u22498037@tuks.co.za
 
 Stephan Smit (u21489476): u21489476@tuks.co.za
 
+Rebecca Oosthuizen (u20512008): u20512008@tuks.co.za
+
 _add yours here_
