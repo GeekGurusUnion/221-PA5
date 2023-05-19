@@ -38,7 +38,7 @@ _(From here on you should be in the correct working directory)_
 Everytime you open your IDE, you can run `make sync`. This will sync all the files from Github onto your computer.
 
 ### Pull Requests
-To make a pull request, go to your Forked Repository, then say Contribute (above the list the files).
+To make a pull request, go to your Forked Repository, then say Contribute (above the list of files).
 
 ## Make doesn't work
 If *make* doesn't work, use this:
