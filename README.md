@@ -76,5 +76,5 @@ Rebecca Oosthuizen (u20512008): u20512008@tuks.co.za
 
 Ashley Tullis (u22486985): u22486985@tuks.co.za
 
-Tiaan Pouwels (u21675229): u22486985@tuks.co.za
+Tiaan Pouwels (u21675229): u21675229@tuks.co.za
 _add yours here_
