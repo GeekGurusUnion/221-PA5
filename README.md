@@ -39,6 +39,7 @@ Everytime you open your IDE, you can run `make sync`. This will sync all the fil
 
 ### Pull Requests
 To make a pull request, go to your Forked Repository, then say Contribute (above the list of files).
+<img width="993" alt="image" src="https://github.com/iwandejong/PA5/assets/29703077/911556e8-97f8-4a62-9003-320477776b4d">
 
 ## Make doesn't work
 If *make* doesn't work, use this:
