@@ -5,7 +5,7 @@
     
     <script>
         var sqlQuery = "SELECT * FROM Wine";
-        XMLRequest(sqlQuery, true);
+        XMLRequest(sqlQuery, true, false);
     </script>  
     <div class="overflow-auto">
         <div class="input-group mb-3">
@@ -26,12 +26,12 @@
         q.addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
                 event.preventDefault();
-                XMLRequest(q.value, true);
+                XMLRequest(q.value, true, false);
             }
         });
 
         function xmlreq() {
-            XMLRequest(q.value, true);
+            XMLRequest(q.value, true, false);
         }
     </script>
 
