@@ -3,6 +3,7 @@ function JSONtoTable(obj) {
 
     $('#table').remove();
     let table = $('<table>');
+    table.addClass('table-condensed');
     table.addClass('table');
     table.attr('id', 'table');
     table.addClass('table-dark');

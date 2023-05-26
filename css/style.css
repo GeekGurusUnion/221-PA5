@@ -96,3 +96,11 @@ input[type='text'] {
     font-family: monospace !important;
     background-color: #d62424;
 }
+
+.table-condensed {
+  font-size: 0.8rem !important;
+}
+
+table {
+  border-collapse: separate;
+}

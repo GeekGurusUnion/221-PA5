@@ -15,7 +15,7 @@
                 <button class="btn btn-primary" type="button" onclick="xmlreq()">Execute SQL Query</button>
             </div>
         </div>
-        <div id="table-container" class="table-responsive" ></div>
+        <div id="table-container" class="table-responsive table-condensed" ></div>
     </div>
 
     <script>
