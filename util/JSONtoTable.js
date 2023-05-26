@@ -184,7 +184,7 @@ function XMLRequest(q, createTable, functions, callback) {
                     }
                 }
                 else {
-                    $('#table').html('<span class="text-danger">No data received. Check JSON validity</span>');
+                    $('#table').html('<span class="text-danger">No data received. Check SQL syntax for possible errors.</span>');
                     $('#loader').empty();
                     $('#loader').hide();
                     reject(xhr.statusText);

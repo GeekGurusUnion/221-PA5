@@ -18,8 +18,8 @@
         </div>
     </div>
 
-    <div id="form-container" class="overflow-scroll">
-        <form id="form" class='row g-3 m-2'></form>
+    <div id="form-container">
+        <form id="form" class='row g-3 m-2 bg-dark'></form>
     </div>
     
     <!-- </body> -->
