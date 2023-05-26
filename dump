@@ -1,0 +1,11 @@
+
+
+        q.addEventListener("keypress", function(event) {
+            if (e.code === "Enter") {
+                document.cookie = "qVal = " + q.value;
+                <?php $sql = $_COOKIE['qVal']; ?>
+                result = <?php echo ($res->buildJSON($sql)); ?>;
+                console.log(result);
+                JSONtoTable(result);    
+            }
+        });
