@@ -1,2 +1,4 @@
 fontawesome
 .vscode
+.gitignore
+.DS_Store
