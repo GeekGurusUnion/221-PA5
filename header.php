@@ -1,7 +1,3 @@
-<?php 
-    // include_once "config.php";
-    // include_once "./util/miniAPI.php";
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -39,76 +35,120 @@
                 $('.nav-link').each(function() {
                     if($(this).attr('href') === pathname) {
                         $(this).addClass('active');
+                        // $(this).removeClass('text-white');
+                        $(this).addClass('text-black');
                         return;
                     }
                 });
             }); 
+
+            function setClient(bool) {
+                if (bool) {
+                    document.cookie = "client = true";
+                } else {
+                    document.cookie = "client = false";
+                }
+            }
         </script>
         <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-            <a href="./index.php" class="nav-link text-white">
+            <a href="./index.php" class="nav-link text-success">
                 <i class="fas fa-home"></i>
             Dashboard
             </a>
         </li>
         <li>
-            <a href="./manage_users.php" class="nav-link text-white">
-            <i class="fas fa-user"></i>
-            Manage Users
-            </a>
-        </li>
-        <li>
-            <a href="./manage_winery.php" class="nav-link text-white">
-            <i class="fas fa-wine-glass"></i>
-            Manage Wineries
-            </a>
-        </li>
-        <li>
-            <a href="./manage_wines.php" class="nav-link text-white">
-            <i class="fas fa-wine-bottle"></i>
-            Manage Wines
-            </a>
-        </li>
-        <li>
-            <a href="./filters.php" class="nav-link text-white">
-                <i class="fas fa-filter"></i>
-            Filters
-            </a>
-        </li>
-        <li>
-            <a href="./db_operations.php" class="nav-link text-white">
-            <i class="fas fa-cog"></i>  
-            Database Operations
-            </a>
-        </li>
-        <li>
-            <a href="./location_sugg.php" class="nav-link text-white">
+            <a href="./location_sugg.php" class="nav-link text-danger">
                 <i class="fas fa-location-dot"></i>
             Destination Suggestion
             </a>
         </li>
         <li>
-            <a href="./custom_sql.php" class="nav-link text-white">
+            <a href="./filters.php" class="nav-link text-danger">
+                <i class="fas fa-filter"></i>
+            Filters
+            </a>
+        </li>
+        <li>
+            <a href="./review.php" class="nav-link text-danger">
+                <i class="fas fa-star"></i>
+            Review Wine
+            </a>
+        </li>
+        <?php if (!$_COOKIE['client'] || $_COOKIE['client'] == 'false') { ?>
+        <li>
+            <a href="./manage_users.php" class="nav-link text-danger">
+            <i class="fas fa-user"></i>
+            Manage Users
+            </a>
+        </li>
+        <li>
+            <a href="./manage_winery.php" class="nav-link text-danger">
+            <i class="fas fa-wine-glass"></i>
+            Manage Wineries
+            </a>
+        </li>
+        <li>
+            <a href="./manage_wines.php" class="nav-link text-danger">
+            <i class="fas fa-wine-bottle"></i>
+            Manage Wines
+            </a>
+        </li>
+        <li>
+            <a href="./db_operations.php" class="nav-link text-warning">
+            <i class="fas fa-cog"></i>  
+            Database Operations
+            </a>
+        </li>
+        <li>
+            <a href="./custom_sql.php" class="nav-link text-success">
                 <i class="fas fa-database"></i>
             Manual SQL Query
             </a>
         </li>
+        <?php } ?>
+        <li class="m-3">
+            <li><h5>Guide</h5></li>
+            <li class="text-success">Fully working</li>
+            <li class="text-warning">Partially working</li>
+            <li class="text-danger">Not implemented</li>
+            <li>
+                <a href="https://github.com/PA5G5/PA5/issues/18" class="">
+                    <i class="fab fa-github"></i> Issue on Github
+                </a>
+            </li>
+        </li>
         </ul>
 
         <hr>
-        <div class="dropdown">
-        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fas fa-user rounded-circle me-2" width="32" height="32"></i>
-            <strong>Manager1</strong>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-            <!-- <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li> -->
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-        </ul>
+        <div class="d-flex">
+            <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-user rounded-circle me-2" width="32" height="32"></i>
+                <?php if ($_COOKIE['client'] == 'true') { ?>
+                    <strong class="text-warning">Client1</strong>
+                <?php } else { ?>
+                    <strong class="text-warning">Manager1</strong>
+                <?php } ?>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <!-- <li><a class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><hr class="dropdown-divider"></li> -->
+                <li><a class="dropdown-item text-warning" href="./login.php">Login Preview</a></li>
+                <li>
+                <?php if ($_COOKIE['client'] == 'true') { ?>
+                    <a class="dropdown-item text-warning" onclick="setClient(false)" href="./index.php">Switch to Manager View</a>
+                <?php } else { ?>
+                    <a class="dropdown-item text-warning" onclick="setClient(true)" href="./index.php">Switch to Client View</a>
+                <?php } ?>
+                </li>
+                <li><a class="dropdown-item text-danger" href="#">Sign out</a></li>
+            </ul>
+            </div>
         </div>
     </div>
-
+    <div id="loader" class="w-100 position-absolute h-100 d-none"></div> 
+    <div class="container m-4 text-white">
     <!-- rest of <body> to be continued here -->
