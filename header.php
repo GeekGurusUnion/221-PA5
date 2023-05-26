@@ -33,7 +33,7 @@
                 // console.log(pathname);
 
                 $('.nav-link').each(function() {
-                    if($(this).attr('href') === pathname) {
+                    if ((pathname === './' && $(this).attr('href') === './index.php') || ($(this).attr('href') === pathname)) {
                         $(this).addClass('active');
                         // $(this).removeClass('text-white');
                         $(this).addClass('text-black');

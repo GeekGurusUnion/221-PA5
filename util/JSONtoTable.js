@@ -8,7 +8,6 @@ function JSONtoTable(obj, functions) {
     // $('#table').html('');
 
     let table = $('<table>');
-    // table.addClass('table-condensed');
     table.addClass('table');
     table.addClass('table-bordered');
     table.attr('id', 'table');
@@ -192,14 +191,13 @@ function XMLRequest(q, createTable, functions, callback) {
             }
         };
         xhr.onerror = function() {
-            reject(xhr.statusText); // Reject the Promise with an error message
+            reject(xhr.statusText);
         };
         $('#loader').show();
         $('#table').empty();
         $('#loader').html(
             '<div class="h-100 d-flex align-items-center justify-content-center position-absolute w-100"><button class="btn btn-primary" type="button"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Retrieving from Server...</button></div>'
         );
-        // document.getElementById('loader').style.display = "block";
         xhr.open("POST", "./util/miniAPI.php", true);
         xhr.send(sqlQuery);
     });
