@@ -1,6 +1,8 @@
 # PA5
 Practical Assignment 5 Group Project
 
+[![wakatime](https://wakatime.com/badge/user/47623a7b-3423-456c-8fc6-cbf861f9eb2d/project/74cac69c-8e0e-4dfa-8bcc-f0efc176a4bf.svg)](https://wakatime.com/badge/user/47623a7b-3423-456c-8fc6-cbf861f9eb2d/project/74cac69c-8e0e-4dfa-8bcc-f0efc176a4bf)
+
 ## Github How-to
 For now, you have to fork the repo. You then commit to the forked repo and create a pull request. 
 A pull request is when you are sure your forked repo works, then you create the request and I'll need to merge it to the main repo. 
