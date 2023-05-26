@@ -1,9 +1,7 @@
-    <!-- <head> -->
-    <?php include "header.php";?>
-    <!-- </head> -->
-    <!-- <body> -->
-        <div class="container">
-            
-        </div>
-    <!-- </body> -->
-    <?php include "footer.php";?>
+<!-- <head> -->
+<?php include "header.php";?>
+<!-- </head> -->
+<!-- <body> -->
+
+<!-- </body> -->
+<?php include "footer.php";?>
