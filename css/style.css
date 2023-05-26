@@ -92,9 +92,9 @@ body {
   .border-top { border-top: 1px solid #e5e5e5; }
   .border-bottom { border-bottom: 1px solid #e5e5e5; }
 
-input[type='text'] {
+.sql {
     font-family: monospace !important;
-    background-color: #d62424;
+    /* background-color: #d62424 !important; */
 }
 
 .table-condensed {

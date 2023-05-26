@@ -2,20 +2,20 @@
 <?php include "header.php";?>
 <!-- </head> -->
 <!-- <body> -->
-    <div id="loader" class="w-100 position-absolute h-100">
-    </div> 
+    
     <script>
         var sqlQuery = "SELECT * FROM Wine";
-        XMLRequest(sqlQuery);
+        XMLRequest(sqlQuery, true);
     </script>  
-    <div class="container m-4 text-white overflow-auto">
+    <div class="overflow-auto">
         <div class="input-group mb-3">
-            <input id="query" type="text" class="form-control bg-dark text-white">
+            <input id="query" type="text" class="sql form-control bg-dark text-white">
             <div class="input-group-append">
                 <button class="btn btn-primary" type="button" onclick="xmlreq()">Execute SQL Query</button>
             </div>
         </div>
-        <div id="table-container" class="table-responsive table-condensed" ></div>
+        <div id="table-container" class="table-responsive table-condensed w-100 justify-content-center">
+        </div>
     </div>
 
     <script>
@@ -26,12 +26,12 @@
         q.addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
                 event.preventDefault();
-                XMLRequest(q.value);
+                XMLRequest(q.value, true);
             }
         });
 
         function xmlreq() {
-            XMLRequest(q.value);
+            XMLRequest(q.value, true);
         }
     </script>
 

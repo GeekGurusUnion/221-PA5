@@ -71,7 +71,8 @@
                 </label>
                 </div>
                 <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-                <p class="mt-5 mb-3 text-body-secondary">© Practical Assignment 5</p>
+                <p class="mt-5 mb-3">© Practical Assignment 5</p>
+                <a href="./">Return to Home</a>
             </form>
         </main>
         <?php include "footer.php";?>

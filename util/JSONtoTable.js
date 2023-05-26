@@ -3,8 +3,9 @@ function JSONtoTable(obj) {
 
     $('#table').remove();
     let table = $('<table>');
-    table.addClass('table-condensed');
+    // table.addClass('table-condensed');
     table.addClass('table');
+    table.addClass('table-bordered');
     table.attr('id', 'table');
     table.addClass('table-dark');
     console.log(obj);
@@ -17,6 +18,7 @@ function JSONtoTable(obj) {
     let tr = $("<tr>");
     for (var i = 0; i < columns.length; i++) {
         let th = $("<th>");
+        th.attr('scope', 'col');
         th.text(columns[i]);
         tr.append(th);
     }
@@ -31,10 +33,13 @@ function JSONtoTable(obj) {
         console.log(vals);
         $.each(vals, (i, elem) => {
             let td = $("<td>");
+            if (i === 0) {
+                td.attr('scope', 'row');
+            }
             td.text(elem); // Set the value as the text of the table cell
             tr.append(td); // Append the table cell to the table row
             });
-        table.append(tr);
+        tbody.append(tr);
     });
 
     table.append(tbody);
@@ -42,33 +47,60 @@ function JSONtoTable(obj) {
     container.append(table);
 }
 
-function XMLRequest(q) {
-    var sqlQuery = JSON.stringify({
-        "sql": q
-    });
+function XMLRequest(q, createTable, callback) {
+    return new Promise(function(resolve, reject) {
+        var sqlQuery = JSON.stringify({
+            "sql": q
+        });
 
+        // console.log(sqlQuery);
+        // console.log(createTable);
 
-    const xhr = new XMLHttpRequest();
-    xhr.withCredentials = true;
-    xhr.addEventListener("readystatechange", function () {
-        if (this.readyState === 4) {
-            // document.getElementById("result").innerHTML = this.responseText;
-            $('#loader').empty();
-            $('#loader').hide();
-            console.log(this.responseText);
-            const obj = JSON.parse(this.responseText);
-            var res = obj.data;
-            res = JSON.stringify(res);
-            res = JSON.parse(res);
-            console.log(res);
-            JSONtoTable(res);
-        }
+        var result;
+
+        $('#loader').removeClass('d-none');
+        $('#loader').html(
+            '<div class="h-100 d-flex align-items-center justify-content-center position-absolute w-100"><button class="btn btn-primary" type="button"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Retrieving from Server...</button></div>'
+        );
+
+        
+        const xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+        // xhr.addEventListener("readystatechange", function () {
+        xhr.onload = function() {
+            if (this.readyState === 4) {
+                if (this.status === 200) {
+                    $('#loader').empty();
+                    $('#loader').hide();
+                    // console.log(this.responseText);
+                    const obj = JSON.parse(this.responseText);
+                    var res = obj.data;
+                    res = JSON.stringify(res);
+                    res = JSON.parse(res);
+                    // console.log(res);
+                    if (createTable) {
+                        JSONtoTable(res);
+                    } else {
+                        resolve(res);
+                    }
+                }
+                else {
+                    $('#table-container').html('<span class="text-danger">No data received. Check JSON validity</span>');
+                    $('#loader').empty();
+                    $('#loader').hide();
+                    reject(xhr.statusText);
+                }
+            }
+        };
+        xhr.onerror = function() {
+            reject(xhr.statusText); // Reject the Promise with an error message
+        };
+        $('#loader').show();
+        $('#loader').html(
+            '<div class="h-100 d-flex align-items-center justify-content-center position-absolute w-100"><button class="btn btn-primary" type="button"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Retrieving from Server...</button></div>'
+        );
+        // document.getElementById('loader').style.display = "block";
+        xhr.open("POST", "./util/miniAPI.php", true);
+        xhr.send(sqlQuery);
     });
-    $('#loader').show();
-    $('#loader').html(
-        '<div class="h-100 d-flex align-items-center justify-content-center position-absolute w-100"><button class="btn btn-primary" type="button"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading Results...</button></div>'
-    );
-    // document.getElementById('loader').style.display = "block";
-    xhr.open("POST", "./util/miniAPI.php", true);
-    xhr.send(sqlQuery);
 }
