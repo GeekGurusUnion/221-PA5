@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <title>Wine Tourism - Management</title>
+    <title>Wine Travels</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./css/style.css" rel="stylesheet">
@@ -18,11 +18,11 @@
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script src="./util/JSONtoTable.js" type="text/javascript"></script>
     </head>
-    <body class="bg-dark overflow-hidden">
+    <body class="bg-dark">
         <main class="d-flex flex-nowrap">
-        <div class="d-flex border border-top-0 border-bottom-0 border-left-0 border-secondary flex-column flex-shrink-0 p-3 text-bg-dark" style="height: 100vh; width: 280px;">
+        <div class="d-flex sidebar-sticky top-0 border border-top-0 border-bottom-0 border-left-0 border-secondary flex-column flex-shrink-0 p-3 text-bg-dark" style="height: 100vh; width: 280px;">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-        <span class="fs-5">Wine Tourism</span>
+        <span class="fs-5">Wine Travels</span>
         </a>
         <hr>
         <script>
@@ -70,26 +70,26 @@
             </a>
         </li>
         <li>
-            <a href="./review.php" class="nav-link text-danger">
+            <a href="./review.php" class="nav-link text-warning">
                 <i class="fas fa-star"></i>
             Review Wine
             </a>
         </li>
         <?php if (!$_COOKIE['client'] || $_COOKIE['client'] == 'false') { ?>
         <li>
-            <a href="./manage_users.php" class="nav-link text-danger">
+            <a href="./manage_users.php" class="nav-link text-warning">
             <i class="fas fa-user"></i>
             Manage Users
             </a>
         </li>
         <li>
-            <a href="./manage_winery.php" class="nav-link text-danger">
+            <a href="./manage_winery.php" class="nav-link text-warning">
             <i class="fas fa-wine-glass"></i>
             Manage Wineries
             </a>
         </li>
         <li>
-            <a href="./manage_wines.php" class="nav-link text-danger">
+            <a href="./manage_wines.php" class="nav-link text-warning">
             <i class="fas fa-wine-bottle"></i>
             Manage Wines
             </a>
