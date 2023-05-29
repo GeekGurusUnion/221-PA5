@@ -104,3 +104,7 @@ body {
 table {
   border-collapse: separate;
 }
+
+.monospace {
+  font-family: monospace !important;
+}

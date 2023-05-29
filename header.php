@@ -64,7 +64,7 @@
             </a>
         </li>
         <li>
-            <a href="./filters.php" class="nav-link text-danger">
+            <a href="./filters.php" class="nav-link text-warning">
                 <i class="fas fa-filter"></i>
             Filters
             </a>
