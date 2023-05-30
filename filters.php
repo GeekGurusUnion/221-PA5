@@ -35,6 +35,21 @@
         <div class="mt-3">
             <button class="btn btn-primary" type="submit" onclick="loadList()">Load List <i class="fas fa-check"></i></button>
         </div>
+        <div class="mt-5">
+            <h5>Special Filter Operations</h5>
+            <div class="d-flex gap-3 m-1">
+                <input type='text' class='form-control' id='input-country-code' placeholder="Enter Winery ID">
+                <button class="btn btn-primary col-md-7" type="submit" onclick="loadList()">Load all Wines from Winery ID</button>
+            </div>
+            <div class="d-flex gap-3 m-1">
+                <input type='text' class='form-control' id='input-country-code' placeholder="Enter Country Code">
+                <button class="btn btn-primary col-md-7" type="submit" onclick="loadList()">Load all Wineries in Country Code</button>
+            </div>
+            <div class="d-flex gap-3 m-1">
+                <input type='text' class='form-control' id='input-country-code' placeholder="...">
+                <button class="btn btn-secondary col-md-7" type="submit" onclick="loadList()">Add yours</button>
+            </div>
+        </div>
     </div>
 </div>
 
