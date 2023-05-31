@@ -15,6 +15,8 @@
     </div>
     <div id="other-locations" class='m-4'>
     </div>
+    <!-- <dialog id="d">Hi! <button onclick="d.close()">Close Modal</button></dialog>
+    <button onclick="d.showModal()">Open Modal</button> -->
 </div>
 <!-- <script src="https://unpkg.com/@usecsv/js/build/index.umd.js"></script> -->
 <script src="./js/location.js"></script>

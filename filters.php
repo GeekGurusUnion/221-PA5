@@ -46,8 +46,12 @@
                 <button class="btn btn-primary col-md-7" type="submit" onclick="loadList()">Load all Wineries in Country Code</button>
             </div>
             <div class="d-flex gap-3 m-1">
+                <input type='text' class='form-control' id='input-country-code' placeholder="e.g. Dry White">
+                <button class="btn btn-primary col-md-7" type="submit" onclick="loadList()">Load all Wines by Type</button>
+            </div>
+            <div class="d-flex gap-3 m-1">
                 <input type='text' class='form-control' id='input-country-code' placeholder="...">
-                <button class="btn btn-secondary col-md-7" type="submit" onclick="loadList()">Add yours</button>
+                <button class="btn btn-secondary col-md-7" type="submit" onclick="loadList()">Add more...</button>
             </div>
         </div>
     </div>
