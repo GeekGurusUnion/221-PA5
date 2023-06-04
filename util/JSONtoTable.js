@@ -2,7 +2,7 @@ function JSONtoTable(obj, functions) {
     console.log(functions);
     let container = $('#table-container');
     if (functions === true || functions === 2) {
-        $('#table-container').html('<div class="d-flex w-100 justify-content-end mb-3 gap-3"><div><button type="button" onclick="XMLRequest(sqlQuery, true, func)" class="btn btn-danger btn-sm mr-3"><i class="fa fa-undo"></i> Revert Changes</button></div><div><button type="button" class="btn btn-success btn-sm"><i class="fas fa-check"></i> Confirm Changes</button></div></div>');
+        $('#table-container').html('<div class="d-flex w-100 justify-content-end mb-3 gap-3"><div><button type="button" onclick="XMLRequest(sqlQuery, true, func)" class="btn btn-danger btn-sm mr-3"><i class="fa fa-undo"></i> Revert Changes</button></div><div><button type="button" class="btn btn-success btn-sm" id="confirmBtn" ><i class="fas fa-check"></i> Confirm Changes</button></div></div>');
     }
     $('#table').remove();
     // $('#table').html('');
