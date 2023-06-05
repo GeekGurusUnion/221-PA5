@@ -31,7 +31,12 @@
                 var pathname = window.location.pathname;
                 pathname = pathname.split('/').pop();
                 pathname = './' + pathname;
-                // console.log(pathname);
+                console.log(pathname);
+
+                if (pathname === './filter_users.php' || pathname === './filter_reviews.php' || pathname === './filter_wineries.php' || pathname === './filter_wines.php') {
+                    $('#filters').addClass('active');
+                    $('#filters').addClass('text-black');
+                }
 
                 $('.nav-link').each(function() {
                     if ((pathname === './' && $(this).attr('href') === './index.php') || ($(this).attr('href') === pathname)) {
@@ -65,7 +70,7 @@
             </a>
         </li>
         <li>
-            <a href="./filters.php" class="nav-link text-warning">
+            <a href="./filters.php" id="filters" class="nav-link text-success">
                 <i class="fas fa-filter"></i>
             Filters
             </a>
