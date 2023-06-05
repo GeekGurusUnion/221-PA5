@@ -5,7 +5,7 @@
         <title>Login</title>  
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="tailwind.css" rel="stylesheet">
+        <!-- <link href="tailwind.css" rel="stylesheet"> -->
         <meta name="description" content="A minimalist and focused to-do app for human."/>
         <meta name=”robots” content="index, follow">
         <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"> -->
@@ -89,11 +89,11 @@
                 <label for="floatingPassword">Password</label>
                 </div>
 
-                <div class="checkbox mb-3">
+                <!-- <div class="checkbox mb-3">
                 <label>
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>
-                </div>
+                </div> -->
                 <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
                 <p class="mt-5 mb-3">© Practical Assignment 5</p>
                 <!-- <a href="./">Return to Home</a> -->
