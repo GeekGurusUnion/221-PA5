@@ -1,4 +1,4 @@
-<?php include "config.php";?>
+<?php include "util/config.php";?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,7 +20,7 @@
             }
 
             body {
-                display: flex;
+                
                 align-items: center;
                 padding-top: 40px;
                 padding-bottom: 40px;
@@ -51,17 +51,41 @@
 
         </style>
     </head>
+    <?php
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $email = $_POST['email'];
+            $password = $_POST['pass'];
+            $conn = $connection;
+            $sql = "SELECT * FROM User WHERE Email='$email'";
+            $user = $conn->query($sql);
+            if($user->num_rows>0){
+                $result = $user->fetch_assoc();
+                $pin = $result['Password'];
+                if($pin==$password){
+                    setcookie('client', "true");
+                    header("Location: ./");
+                }
+                else{
+                    echo "<script>alert('Password incorrect');</script>";
+                }
+            }
+            else{
+                echo "<script>alert('Email is not registered');</script>";
+            }
+        }
+        
+    ?>
     <body class="text-center bg-dark">
         <main class="form-signin w-100 m-auto text-white">
-            <form>
+            <form action="login.php" method="POST">
                 <h1 class="h3 mb-3 fw-normal">Sign in to Wine Travels</h1>
 
                 <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                 <label for="floatingInput">Email address</label>
                 </div>
                 <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <input type="password" name="pass" class="form-control" id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">Password</label>
                 </div>
 
@@ -72,7 +96,7 @@
                 </div>
                 <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
                 <p class="mt-5 mb-3">© Practical Assignment 5</p>
-                <a href="./">Return to Home</a>
+                <!-- <a href="./">Return to Home</a> -->
             </form>
         </main>
         <?php include "footer.php";?>
