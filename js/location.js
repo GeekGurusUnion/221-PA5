@@ -1,4 +1,20 @@
 var str = "SELECT Winery.name, Winery.Country, Wine.rating, Wine.count, CONCAT(Winery.Street_name, ', ', Winery.Suburb, ', ', Winery.Province, ', ', Winery.Country) FROM Winery INNER JOIN (SELECT Winery_id, AVG(rating) AS rating, COUNT(*) AS count FROM Wine GROUP BY Winery_id) as Wine ON Winery.Winery_id = Wine.Winery_id;";
+var str = "SELECT Winery.name, Winery.country, AVG(Wine.avgrating), COUNT(Wine.Wine_id) AS count, CONCAT(Winery.Street_name, ', ', Winery.Suburb, ', ', Winery.Province, ', ', Winery.Country) as rating \
+FROM Winery \
+INNER JOIN ( \
+		SELECT AVGReviews.Wine_id, AVGReviews.avgrating, Wines.Winery_id \
+    FROM ( \
+        SELECT Wine_id, AVG(rating) as avgrating \
+        FROM Review \
+        GROUP BY Wine_id \
+    ) as AVGReviews \
+    INNER JOIN ( \
+        SELECT Wine_id, Winery_id \
+        FROM Wine \
+        GROUP BY Wine_id, Winery_id \
+    ) as Wines ON AVGReviews.Wine_id = Wines.Wine_id \
+) as Wine ON Winery.Winery_id = Wine.Winery_id \
+GROUP BY Winery.name, Winery.country, Winery.Street_name, Winery.Suburb, Winery.Province, Winery.Country;";
     XMLRequest(str, false)
     .then(wineSuggestor)
     .catch(function(error) {
