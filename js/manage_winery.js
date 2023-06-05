@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log("No changes recorded");
           }
           XMLRequest(query,false,false);
-          location.reload();
+          location.reload(true);
         });
       } else {
         setTimeout(attachButtonListener, 1000); // Retry after a delay if the button is not available
