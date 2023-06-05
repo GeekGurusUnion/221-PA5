@@ -143,13 +143,7 @@
                 <li><a class="dropdown-item" href="#">Profile</a></li>
                 <li><hr class="dropdown-divider"></li> 
                 <li><a class="dropdown-item text-warning" href="./login.php">Login Preview</a></li>-->
-                <li>
-                <?php if (isset($_COOKIE['client']) && $_COOKIE['client']=='true') { ?>
-                    <a class="dropdown-item text-warning" onclick="setClient(false)" href="./index.php">Switch to Manager View</a>
-                <?php } else { ?>
-                    <a class="dropdown-item text-warning" onclick="setClient(true)" href="./index.php">Switch to Client View</a>
-                <?php } ?>
-                </li>
+                
                 <li><a class="dropdown-item text-danger" href="" onclick="signOut()">Sign out</a></li>
             </ul>
             </div>
