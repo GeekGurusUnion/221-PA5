@@ -6,7 +6,7 @@
         Welcome to the Wine Tourism Dashboard
     </h3>
     <div class="row my-4">
-    <?php if (!$_COOKIE['client'] || $_COOKIE['client'] == 'false') { ?>
+    <?php if (isset($_COOKIE['client']) && $_COOKIE['client']=='false') { ?>
         <div class="col-lg">
             <div class="card-body bg-dark text-white rounded border border-secondary p-4 h-100">
                 <h5 class="card-title"><i class="fas fa-user"></i> Manage Users</h5>
