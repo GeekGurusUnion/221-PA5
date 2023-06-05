@@ -58,7 +58,7 @@
             </a>
         </li>
         <li>
-            <a href="./location_sugg.php" class="nav-link text-warning">
+            <a href="./location_sugg.php" class="nav-link text-success">
                 <i class="fas fa-location-dot"></i>
             Destination Suggestion
             </a>
@@ -77,19 +77,19 @@
         </li>
         <?php if(isset($_COOKIE['client']) && $_COOKIE['client']=='false') { ?>
         <li>
-            <a href="./manage_users.php" class="nav-link text-warning">
+            <a href="./manage_users.php" class="nav-link text-success">
             <i class="fas fa-user"></i>
             Manage Users
             </a>
         </li>
         <li>
-            <a href="./manage_winery.php" class="nav-link text-warning">
+            <a href="./manage_winery.php" class="nav-link text-success">
             <i class="fas fa-wine-glass"></i>
             Manage Wineries
             </a>
         </li>
         <li>
-            <a href="./manage_wines.php" class="nav-link text-warning">
+            <a href="./manage_wines.php" class="nav-link text-success">
             <i class="fas fa-wine-bottle"></i>
             Manage Wines
             </a>

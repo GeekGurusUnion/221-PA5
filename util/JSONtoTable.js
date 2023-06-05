@@ -1,8 +1,8 @@
 function JSONtoTable(obj, functions) {
-    console.log(functions);
+    // console.log(functions);
     let container = $('#table-container');
     if (functions === true || functions === 2) {
-        $('#table-container').html('<div class="d-flex w-100 justify-content-end mb-3 gap-3"><div><button type="button" onclick="XMLRequest(sqlQuery, true, func)" class="btn btn-danger btn-sm mr-3"><i class="fa fa-undo"></i> Revert Changes</button></div><div><button type="button" class="btn btn-success btn-sm"><i class="fas fa-check"></i> Confirm Changes</button></div></div>');
+        $('#table-container').html('<div class="d-flex w-100 justify-content-end mb-3 gap-3"><div><button type="button" onclick="XMLRequest(sqlQuery, true, func)" class="btn btn-danger btn-sm mr-3"><i class="fa fa-undo"></i> Revert Changes</button></div><div><button type="button" class="btn btn-success btn-sm" id="confirmBtn" ><i class="fas fa-check"></i> Confirm Changes</button></div></div>');
     }
     $('#table').remove();
     // $('#table').html('');
@@ -12,9 +12,9 @@ function JSONtoTable(obj, functions) {
     table.addClass('table-bordered');
     table.attr('id', 'table');
     table.addClass('table-dark');
-    console.log(obj);
+    // console.log(obj);
     var columns = Object.keys(obj[0]);
-    console.log(columns);
+    // console.log(columns);
 
     let thead = $("<thead>");
     $(thead).addClass('thead-light');
@@ -46,7 +46,7 @@ function JSONtoTable(obj, functions) {
         let tr = $("<tr>");
         tr.attr('id', 'tr' + x);
         let vals = Object.values(item);
-        console.log(vals);
+        // console.log(vals);
         $.each(vals, (x, elem) => {
             let td = $("<td>");
             if (x === 0) {
@@ -86,20 +86,20 @@ function JSONtoTable(obj, functions) {
 
 // functions
 function editRow(elem) {
-    console.log(elem);
+    // console.log(elem);
     var tr = '#tr' + elem;
     $('#tr' + elem).addClass("table-warning");
     $('#tr' + elem + ' td').each(function() {
-        console.log($(this).attr("id"));
-        console.log(elem);
+        // console.log($(this).attr("id"));
+        // console.log(elem);
         if($(this).attr("id") != elem) {
             $(this).attr('contenteditable', 'true');
         }
     });
     $('#table #tr' + elem).each(function() {
-        console.log($(this).attr("id"));
-        console.log(tr.slice(1));
-        console.log($(this).attr("id") != tr.slice(1));
+        // console.log($(this).attr("id"));
+        // console.log(tr.slice(1));
+        // console.log($(this).attr("id") != tr.slice(1));
         if ($(this).attr("id") != tr.slice(1)) {
             $(this).removeClass("table-warning");
         }
@@ -109,16 +109,16 @@ function deleteRow(elem) {
     var tr = '#tr' + elem;
     $('#tr' + elem).addClass("table-danger");
     $('#tr' + elem + ' td').each(function() {
-        console.log($(this).attr("id"));
-        console.log(elem);
+        // console.log($(this).attr("id"));
+        // console.log(elem);
         if($(this).attr("id") != elem) {
             $(this).attr('contenteditable', 'true');
         }
     });
     $('#table #tr' + elem).each(function() {
-        console.log($(this).attr("id"));
-        console.log(tr.slice(1));
-        console.log($(this).attr("id") != tr.slice(1));
+        // console.log($(this).attr("id"));
+        // console.log(tr.slice(1));
+        // console.log($(this).attr("id") != tr.slice(1));
         if ($(this).attr("id") != tr.slice(1)) {
             $(this).removeClass("table-danger");
         }
@@ -128,16 +128,16 @@ function rateRow(elem) {
     var tr = '#tr' + elem;
     $('#tr' + elem).addClass("table-success");
     $('#tr' + elem + ' td').each(function() {
-        console.log($(this).attr("id"));
-        console.log(elem);
+        // console.log($(this).attr("id"));
+        // console.log(elem);
         if($(this).attr("id") != elem) {
             $(this).attr('contenteditable', 'true');
         }
     });
     $('#table #tr' + elem).each(function() {
-        console.log($(this).attr("id"));
-        console.log(tr.slice(1));
-        console.log($(this).attr("id") != tr.slice(1));
+        // console.log($(this).attr("id"));
+        // console.log(tr.slice(1));
+        // console.log($(this).attr("id") != tr.slice(1));
         if ($(this).attr("id") != tr.slice(1)) {
             $(this).removeClass("table-success");
         }
