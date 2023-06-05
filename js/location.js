@@ -1,9 +1,8 @@
-var str = "SELECT Winery.name, Winery.country, Wine.rating FROM Winery INNER JOIN (SELECT Winery_id, AVG(rating) AS rating FROM Wine GROUP BY Winery_id) as Wine ON Winery.Winery_id = Wine.Winery_id;";
+var str = "SELECT Winery.name, Winery.Country, Wine.rating, Wine.count, CONCAT(Winery.Street_name, ', ', Winery.Suburb, ', ', Winery.Province, ', ', Winery.Country) FROM Winery INNER JOIN (SELECT Winery_id, AVG(rating) AS rating, COUNT(*) AS count FROM Wine GROUP BY Winery_id) as Wine ON Winery.Winery_id = Wine.Winery_id;";
     XMLRequest(str, false)
     .then(wineSuggestor)
     .catch(function(error) {
       console.error(error);
-      // Handle the error here
     });
 
 let wineriesObj = [];
@@ -25,7 +24,7 @@ function wineSuggestor(res) {
         }
       
     // console.log(arrayOfArrays);
-    console.log(wineries);
+    // console.log(wineries);
 }
 
 // Winery sample array. Database not yet ready.
@@ -66,20 +65,20 @@ function assignData(data) {
         for (var k = 0; k < wineries.length; k++) {
             for (var j = 1; j < to; j++) {
                 if (wineries[k][1] === array[j][0]) {
-                    wineries[k][3] = array[j][i]
+                    wineries[k][5] = array[j][i]
                 }
             }
         }
-        console.log(wineries);
+        // console.log(wineries);
         wineries.sort(sortFunction); 
         
         // var rankings = getSortedKeys(distances);
         console.log(wineries);
 
-        best.innerHTML = '<div class=" border rounded p-4 border-success d-flex justify-content-between"><div><h3>' + wineries[0][0] + '</h3><h5>Located in: ' + wineries[0][1] + '</h5><div class="d-flex gap-2"><div class="mr-2"><span class="badge bg-success">BEST OPTION</span></div><div class="mr-2"><span class="badge bg-warning text-black"><i class="fas fa-star"></i> ' + parseFloat(wineries[0][2]).toFixed(1) + '</span></div><div><span class="badge bg-secondary">' + Math.round(wineries[0][3]) + 'km away from you</span></div></div></div><div><button class="btn btn-primary" type="submit" onclick="loadForm()">View Winery <i class="fas fa-wine-glass"></i></button></div></div>';
+        best.innerHTML = '<div class="border rounded p-4 border-success d-flex justify-content-between h-100 align-middle"><div><h5>' + wineries[0][0] + '</h5><h6>Located in: ' + wineries[0][1] + '</h6><div class="d-flex gap-2"><div class="mr-2"><span class="badge bg-warning text-black"><i class="fas fa-star"></i> ' + parseFloat(wineries[0][2]).toFixed(1) + '</span></div><div><span class="badge bg-secondary">' + Math.round(wineries[0][5]) + 'km away from you</span></div><div><span class="badge bg-primary">' + wineries[0][3] + ' wines available</span></div></div><div class="pt-3"><span class="text-secondary"><i class="fas fa-location-dot"></i> ' + wineries[0][4] + '</span></div></div></div>';
 
         for (var k = 1; k < wineries.length; k++) {
-            other.innerHTML += '<div class="m-2 border rounded p-4 border-secondary d-flex justify-content-between"><div><h5>' + wineries[k][0] + '</h5><h6>Located in: ' + wineries[k][1] + '</h6><div class="d-flex gap-2"><div class="mr-2"><span class="badge bg-warning text-black"><i class="fas fa-star"></i> ' + parseFloat(wineries[k][2]).toFixed(1) + '</span></div><div><span class="badge bg-secondary">' + Math.round(wineries[k][3]) + 'km away from you</span></div></div></div><div><button class="btn btn-secondary" type="submit" onclick="loadForm()">View Winery <i class="fas fa-wine-glass"></i></button></div></div>';
+            other.innerHTML += '<div class="m-2 border p-4 rounded border-secondary d-flex justify-content-between h-100 align-middle"><div><h5>' + wineries[k][0] + '</h5><h6>Located in: ' + wineries[k][1] + '</h6><div class="d-flex gap-2"><div class="mr-2"><span class="badge bg-warning text-black"><i class="fas fa-star"></i> ' + parseFloat(wineries[k][2]).toFixed(1) + '</span></div><div><span class="badge bg-secondary">' + Math.round(wineries[k][5]) + 'km away from you</span></div><div><span class="badge bg-primary">' + wineries[k][3] + ' wines available</span></div></div><div class="pt-3"><span class="text-secondary"><i class="fas fa-location-dot"></i> ' + wineries[k][4] + '</span></div></div></div>';
         }
 
 
@@ -105,13 +104,11 @@ function csvToArray(csv) {
 }
 
 function sortFunction(a, b) {
-    console.log("Comparing " + a[3] + " with " + b[3]);
-    console.log("Comparing " + a[2] + " with " + b[2]);
-    var result = parseFloat(a[3]) - parseFloat(b[3]);
+    // console.log("Comparing " + a[3] + " with " + b[3]);
+    // console.log("Comparing " + a[2] + " with " + b[2]);
+    var result = parseFloat(a[5]) - parseFloat(b[5]);
     if (result !== 0) {
         return result;
     }
-    
-    // If the fourth field is equal, sort by the third field (index 2)
     return parseFloat(b[2]) - parseFloat(a[2]);
 }

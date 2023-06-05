@@ -58,7 +58,7 @@
             </a>
         </li>
         <li>
-            <a href="./location_sugg.php" class="nav-link text-warning">
+            <a href="./location_sugg.php" class="nav-link text-success">
                 <i class="fas fa-location-dot"></i>
             Destination Suggestion
             </a>
