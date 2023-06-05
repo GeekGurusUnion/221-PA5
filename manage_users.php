@@ -11,4 +11,5 @@
         <div id="table-container" class="table table-fit table-condensed justify-content-center">
         </div>
 <!-- </body> -->
+<script src="js/manage_users.js"></script>
 <?php include "footer.php";?>

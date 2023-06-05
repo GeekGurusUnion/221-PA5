@@ -14,4 +14,5 @@
     </div>
 
 <!-- </body> -->
+<script src="js/manage_wines.js"></script>
 <?php include "footer.php";?>
