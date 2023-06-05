@@ -62,3 +62,17 @@ function loadList() {
       // Handle the error here
     });
 }
+
+function get_cookie(name){
+    return document.cookie.split(';').some(c => {
+        return c.trim().startsWith(name + '=');
+    });
+}
+
+function signOut() {
+    if(get_cookie("client")) {
+        document.cookie = "client=" +
+          ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+      }
+    window.location.href = './login.php';
+}

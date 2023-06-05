@@ -1,3 +1,4 @@
+<?php if(!isset($_COOKIE['client'])) {header("Location: ./login.php");} ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -144,7 +145,7 @@
                     <a class="dropdown-item text-warning" onclick="setClient(true)" href="./index.php">Switch to Client View</a>
                 <?php } ?>
                 </li>
-                <li><a class="dropdown-item text-danger" href="./login.php">Sign out</a></li>
+                <li><a class="dropdown-item text-danger" href="" onclick="signOut()">Sign out</a></li>
             </ul>
             </div>
         </div>
