@@ -72,7 +72,16 @@
                         setcookie('client', "false");
                     }
                     else{
-                        setcookie('client', "true");
+                        $stm = "SELECT * FROM Connoisseur WHERE User_id='$id'";
+                        $connoisseur = $conn->query($stm);
+                        if($connoisseur->num_rows > 0){
+                            setcookie('connoisseur', "true");
+                            setcookie('client', "true");
+                        }
+                        else{
+                            setcookie('client', "true");
+                            setcookie('connoisseur', "false");
+                        }
                     }
                     setcookie("user_id", $id);
                     setcookie("name", $name);

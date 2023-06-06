@@ -150,6 +150,8 @@
                     <strong><?php echo $_COOKIE['name'] ?></strong>
                     <?php if(isset($_COOKIE['client']) && $_COOKIE['client']=='false') { ?>
                         <span class="small badge text-success">Manager</span>
+                    <?php } else if(isset($_COOKIE['connoisseur']) && $_COOKIE['connoisseur']=='true') { ?>
+                        <span class="small badge text-secondary">Connoiseur</span>
                     <?php } else { ?>
                         <span class="small badge text-primary">Client</span>
                     <?php } ?>
