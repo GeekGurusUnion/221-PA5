@@ -1,6 +1,10 @@
 # PA5
 Practical Assignment 5 Group Project
 
+## How-to
+
+Our web-based application runs on PHP. 
+
 ## Database Connection
 
 Our cloud database runs on Google Cloud. You connect exactly the same way as you would with the other Practical Assignments, the connection details are in the "config.php". You can use it with any canned app such as MySQL Workbench. The only difference is when we start working on the database itself, there is no need to dump & upload the database to Github everytime, so it saves a lot of time. 
