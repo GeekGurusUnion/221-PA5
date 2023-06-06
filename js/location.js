@@ -72,13 +72,19 @@ function assignData(data) {
         for (i = 1; i < to; i++) {
             // console.log(i);
             // console.log(array[0][i])
-            if (array[0][i] === input.value) {
-                console.log('found');
+            if (array[0][i] === input.value.toUpperCase()) {
+                // console.log('found');
                 break;
             }
         }
-
-        for (var k = 0; k < wineries.length; k++) {
+        if (i == to) {
+            alert("Not a valid country entered. Please try again and ensure it's in the correct format.");
+            input.value = '';
+            input.focus();
+            return;
+        }
+        let totalWines = 5;
+        for (var k = 0; k < totalWines; k++) {
             for (var j = 1; j < to; j++) {
                 if (wineries[k][1] === array[j][0]) {
                     wineries[k][5] = array[j][i]
@@ -91,9 +97,9 @@ function assignData(data) {
         // var rankings = getSortedKeys(distances);
         console.log(wineries);
 
-        best.innerHTML = '<div class="border rounded p-4 border-success d-flex justify-content-between h-100 align-middle"><div><h5>' + wineries[0][0] + '</h5><h6>Located in: ' + wineries[0][1] + '</h6><div class="d-flex gap-2"><div class="mr-2"><span class="badge bg-warning text-black"><i class="fas fa-star"></i> ' + parseFloat(wineries[0][2]).toFixed(1) + '</span></div><div><span class="badge bg-secondary">' + Math.round(wineries[0][5]) + 'km away from you</span></div><div><span class="badge bg-primary">' + wineries[0][3] + ' wines available</span></div></div><div class="pt-3"><span class="text-secondary"><i class="fas fa-location-dot"></i> ' + wineries[0][4] + '</span></div></div></div>';
+        best.innerHTML = '<div class="border rounded p-4 border-success d-flex justify-content-between h-100 align-middle"><div><h5>' + wineries[0][0] + '</h5><h6>Located in: ' + wineries[0][1] + '</h6><div class="d-flex gap-2"><div><span class="badge bg-success">Suggested Winery</span></div><div class="mr-2"><span class="badge bg-warning text-black"><i class="fas fa-star"></i> ' + parseFloat(wineries[0][2]).toFixed(1) + '</span></div><div><span class="badge bg-secondary">' + Math.round(wineries[0][5]) + 'km away from you</span></div><div><span class="badge bg-primary">' + wineries[0][3] + ' wines available</span></div></div><div class="pt-3"><span class="text-secondary"><i class="fas fa-location-dot"></i> ' + wineries[0][4] + '</span></div></div></div>';
 
-        for (var k = 1; k < wineries.length; k++) {
+        for (var k = 1; k < totalWines; k++) {
             other.innerHTML += '<div class="m-2 border p-4 rounded border-secondary d-flex justify-content-between h-100 align-middle"><div><h5>' + wineries[k][0] + '</h5><h6>Located in: ' + wineries[k][1] + '</h6><div class="d-flex gap-2"><div class="mr-2"><span class="badge bg-warning text-black"><i class="fas fa-star"></i> ' + parseFloat(wineries[k][2]).toFixed(1) + '</span></div><div><span class="badge bg-secondary">' + Math.round(wineries[k][5]) + 'km away from you</span></div><div><span class="badge bg-primary">' + wineries[k][3] + ' wines available</span></div></div><div class="pt-3"><span class="text-secondary"><i class="fas fa-location-dot"></i> ' + wineries[k][4] + '</span></div></div></div>';
         }
 
