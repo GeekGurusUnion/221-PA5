@@ -143,10 +143,8 @@
             <input type="text" id="search6" class = "searchbar" placeholder="Search for an Alcohol %">
             <label class = "searchlabel">Price:</label>
             <input type="text" id="search7" class = "searchbar" placeholder="Search for a Price">
-            <label class = "searchlabel">Rating:</label>
-            <input type="text" id="search8" class = "searchbar" placeholder="Search for a Rating">
             <label class = "searchlabel">Winery:</label>
-            <input type="text" id="search9" class = "searchbar" placeholder="Search for a Winery">
+            <input type="text" id="search8" class = "searchbar" placeholder="Search for a Winery">
             <div style = "display:flex; justify-content:center">
             <button type="button" onclick = "search()" style = "height: 25px; width:60px; font-size:12px; background-color:#212529; color: #FFC107; margin-top:10px; margin-right:5px">Search</button><br>
                 <button type="button" onclick = "reset()" style = "height: 25px; width:60px; font-size:12px; background-color:#212529; color: #FFC107; margin-top:10px; margin-bottom:10px">Reset</button><br>
@@ -214,21 +212,6 @@
                         <div>
                             <label class="searchlabel">Max:</label>
                             <input type="text" class = "searchbar" id="alcohol2" placeholder="Maximum Percentage">
-                        </div>
-                        <div style = "text-align:center"><button type="button" onclick = "filterWines()" style = "height: 20px; font-size:10px; background-color:#212529; color:white; margin:10px;">Apply</button></div>
-                    </div>
-                </div>
-
-                <div id="rating">
-                    <label class = "filtertitle">Rating:</label><br>
-                    <div class="dropdown-content" style = "height:95px">
-                        <div>
-                            <label class="searchlabel">Min:</label>
-                            <input type="text" class = "searchbar" id="rating1" placeholder="Minimum Rating" style="margin-top: 10px">
-                        </div>
-                        <div>
-                            <label class="searchlabel">Max:</label>
-                            <input type="text" class = "searchbar" id="rating2" placeholder="Maximum Rating">
                         </div>
                         <div style = "text-align:center"><button type="button" onclick = "filterWines()" style = "height: 20px; font-size:10px; background-color:#212529; color:white; margin:10px;">Apply</button></div>
                     </div>
@@ -385,7 +368,7 @@
                 shouldSwitch = false;
                 var x = rows[i].getElementsByTagName("TD")[n];
                 var y = rows[i + 1].getElementsByTagName("TD")[n];
-                if (n==0)//If sorting by first row, IDs need to be cast to int
+                if (n==0 || n==7)//If sorting by first row, IDs need to be cast to int
                 {
                     if (dir == "asc") 
                     {
@@ -446,7 +429,7 @@
         var input = [];
         var _td = [];
         var _tv = [];
-        for (var i=0; i<10; i++)
+        for (var i=0; i<9; i++)
         {
             input[i] = document.getElementById("search"+i).value.toUpperCase();
         }
@@ -461,17 +444,17 @@
     
         for (var i = 0; i < tr.length; i++) 
         {
-            for(var j=0; j<10; j++)
+            for(var j=0; j<9; j++)
             {
                 _td[j] = tr[i].getElementsByTagName("td")[j];
             }
             if (_td[0]) 
             {
-                for(var j=0; j<10; j++)
+                for(var j=0; j<9; j++)
                 {
                     _tv[j] = _td[j].textContent;
                 }
-                if (_tv[0].toUpperCase().indexOf(input[0]) > -1 && _tv[1].toUpperCase().indexOf(input[1]) > -1 && _tv[2].toUpperCase().indexOf(input[2]) > -1 && _tv[3].toUpperCase().indexOf(input[3]) > -1 && _tv[4].toUpperCase().indexOf(input[4]) > -1 && _tv[5].toUpperCase().indexOf(input[5]) > -1 && _tv[6].toUpperCase().indexOf(input[6]) > -1 && _tv[7].toUpperCase().indexOf(input[7]) > -1 && _tv[8].toUpperCase().indexOf(input[8]) > -1 && _tv[9].toUpperCase().indexOf(input[9]) > -1)
+                if (_tv[0].toUpperCase().indexOf(input[0]) > -1 && _tv[1].toUpperCase().indexOf(input[1]) > -1 && _tv[2].toUpperCase().indexOf(input[2]) > -1 && _tv[3].toUpperCase().indexOf(input[3]) > -1 && _tv[4].toUpperCase().indexOf(input[4]) > -1 && _tv[5].toUpperCase().indexOf(input[5]) > -1 && _tv[6].toUpperCase().indexOf(input[6]) > -1 && _tv[7].toUpperCase().indexOf(input[7]) > -1 && _tv[8].toUpperCase().indexOf(input[8]) > -1)
                 {
                     tr[i].style.display = "";
                 } 
@@ -527,8 +510,6 @@
         document.getElementById('price2').value = "";
         document.getElementById('alcohol1').value = "";
         document.getElementById('alcohol2').value = "";
-        document.getElementById('rating1').value = "";
-        document.getElementById('rating2').value = "";
         document.getElementById('age1').value = "";
         document.getElementById('age2').value = "";
 
@@ -632,7 +613,7 @@
     function filterWines() //Function to filter table
     {
 
-        var typeInput = [], producerInput = [], countryInput = [], wineryInput = [], minPrice, maxPrice, minAlcohol, maxAlcohol, minRating, maxRating, minAge, maxAge, found = [1,1,1,1,1,1,1,1];
+        var typeInput = [], producerInput = [], countryInput = [], wineryInput = [], minPrice, maxPrice, minAlcohol, maxAlcohol, minAge, maxAge, found = [1,1,1,1,1,1,1];
         const d = new Date();
         let year = d.getFullYear();
         var input, _td = [], _tv = [], show;
@@ -673,8 +654,6 @@
         maxPrice = document.getElementById('price2').value;
         minAlcohol = document.getElementById('alcohol1').value.toUpperCase();
         maxAlcohol = document.getElementById('alcohol2').value.toUpperCase();
-        minRating = document.getElementById('rating1').value.toUpperCase();
-        maxRating = document.getElementById('rating2').value.toUpperCase();
         minAge = document.getElementById('age1').value.toUpperCase();
         maxAge = document.getElementById('age2').value.toUpperCase();
 
@@ -692,15 +671,6 @@
             alert("Please enter valid Alcohol Minimum and Maximum.");
             document.getElementById('alcohol1').value = "";
             document.getElementById('alcohol2').value = "";
-            filterWines();
-            return;
-        }
-
-        if (parseInt(maxRating) < parseInt(minRating))
-        {
-            alert("Please enter valid Rating Minimum and Maximum.");
-            document.getElementById('rating1').value = "";
-            document.getElementById('rating2').value = "";
             filterWines();
             return;
         }
@@ -728,11 +698,10 @@
             _td[0] = tr[i].getElementsByTagName("td")[3];//TYPES
             _td[1] = tr[i].getElementsByTagName("td")[4];//PROD
             _td[2] = tr[i].getElementsByTagName("td")[5];//COUNTRIES
-            _td[3] = tr[i].getElementsByTagName("td")[9];//WINERIES
+            _td[3] = tr[i].getElementsByTagName("td")[8];//WINERIES
             _td[4] = tr[i].getElementsByTagName("td")[7];//PRICE
             _td[5] = tr[i].getElementsByTagName("td")[6];//ALCOHOL
-            _td[6] = tr[i].getElementsByTagName("td")[8];//RATING
-            _td[7] = tr[i].getElementsByTagName("td")[2];//AGE/YEAR
+            _td[6] = tr[i].getElementsByTagName("td")[2];//AGE/YEAR
 
             if (_td[0]) 
             {
@@ -743,7 +712,6 @@
                 _tv[4] = _td[4].textContent;
                 _tv[5] = _td[5].textContent;
                 _tv[6] = _td[6].textContent;
-                _tv[7] = _td[7].textContent;
                 for (var k = 0; k < typeInput.length; k++)
                 {
                     if (_tv[0].toUpperCase().indexOf(typeInput[k]) <= -1)
@@ -811,7 +779,7 @@
                     found[5] = 1;
                 }
 
-                if (parseInt(_tv[6]) < parseInt(minRating) || parseInt(_tv[6]) > parseInt(maxRating))
+                if ((parseInt(year) - parseInt(_tv[6])) < (parseInt(minAge)) || (parseInt(year) - parseInt(_tv[6])) > (parseInt(maxAge)))
                 {
                     found[6] = 0;
                 }
@@ -819,23 +787,14 @@
                 {
                     found[6] = 1;
                 }
-
-                if ((parseInt(year) - parseInt(_tv[7])) < (parseInt(minAge)) || (parseInt(year) - parseInt(_tv[7])) > (parseInt(maxAge)))
-                {
-                    found[7] = 0;
-                }
-                else
-                {
-                    found[7] = 1;
-                }
             } 
 
-            if(found[0] == 1 && found[1] == 1 && found[2] == 1 && found[3] == 1 && found[4] == 1 && found[5] == 1 && found[6] == 1 && found[7] == 1)
+            if(found[0] == 1 && found[1] == 1 && found[2] == 1 && found[3] == 1 && found[4] == 1 && found[5] == 1 && found[6] == 1)
             {
                 tr[i].style.display = "";
             }
 
-            for(var k = 0; k < 8; k++)
+            for(var k = 0; k < 7; k++)
             {
                 found[k] = 1;
             }
@@ -844,7 +803,7 @@
 
     var numTypes = 0, numProducers = 0, numCountries = 0, numWineries = 0, numWines = 0;
 
-    var str = "SELECT Wine.Wine_id AS ID, Wine.Name, Wine.year AS Year, Wine.Type, Wine.Producer, Wine.Country_of_Origin AS Country, Wine.AlcoholPer AS 'Alcohol %', Wine.Price, Wine.Rating, Winery.Name AS Winery FROM Wine INNER JOIN Winery ON Wine.Winery_id=Winery.Winery_id";
+    var str = "SELECT Wine.Wine_id AS ID, Wine.Name, Wine.year AS Year, Wine.Type, Wine.Producer, Wine.Country_of_Origin AS Country, Wine.AlcoholPer AS 'Alcohol %', Wine.Price, Winery.Name AS Winery FROM Wine INNER JOIN Winery ON Wine.Winery_id=Winery.Winery_id";
     getWineDB(str,convert);
 
     str = "SELECT Type FROM Wine GROUP BY Type ORDER BY Type";
