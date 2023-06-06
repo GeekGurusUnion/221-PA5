@@ -153,7 +153,6 @@
                     <?php } else { ?>
                         <span class="small badge text-primary">Client</span>
                     <?php } ?>
-                    <strong class="text-warning"><?php echo $_COOKIE['name'] ?></strong>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                 <!-- <li><a class="dropdown-item" href="#">New project...</a></li>
