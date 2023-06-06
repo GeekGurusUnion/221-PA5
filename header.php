@@ -89,12 +89,14 @@
             Filters
             </a>
         </li>
+        <?php if(isset($_COOKIE['client']) && $_COOKIE['client']=='true') { ?>
         <li>
             <a href="./review.php" class="nav-link text-warning">
                 <i class="fas fa-star"></i>
             Review Wine
             </a>
         </li>
+        <?php } ?>
         <?php if(isset($_COOKIE['client']) && $_COOKIE['client']=='false') { ?>
         <li>
             <a href="./manage_users.php" class="nav-link text-white">
