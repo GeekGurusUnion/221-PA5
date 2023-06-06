@@ -58,7 +58,7 @@ function JSONtoTable(obj, functions) {
         var functionsArr = [
             '<button type="button" class="btn btn-warning btn-sm" onclick="editRow(' + x + ')"><i class="fas fa-pen"></i></button>',
             '<button type="button" class="btn btn-danger btn-sm" onclick="deleteRow(' + x + ')"><i class="fas fa-trash"></i></button>',
-            '<button type="button" class="btn btn-success btn-sm" onclick="rateRow(' + x + ')"><i class="fas fa-star"></i> Rate this wine</button>'
+            '<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#narratModal"><i class="fas fa-star"></i> Rate this wine</button>'
         ]
         if (functions === true) {
             for (var i = 0; i < 2; i++) {

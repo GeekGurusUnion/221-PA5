@@ -3,7 +3,7 @@ Practical Assignment 5 Group Project
 
 ## How-to
 
-Our web-based application runs on PHP. 
+Our web-based application runs on PHP. // rest to follow
 
 ## Database Connection
 
