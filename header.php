@@ -58,19 +58,19 @@
         </script>
         <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-            <a href="./index.php" class="nav-link text-success">
+            <a href="./index.php" class="nav-link text-white">
                 <i class="fas fa-home"></i>
             Dashboard
             </a>
         </li>
         <li>
-            <a href="./location_sugg.php" class="nav-link text-success">
+            <a href="./location_sugg.php" class="nav-link text-white">
                 <i class="fas fa-location-dot"></i>
             Destination Suggestion
             </a>
         </li>
         <li>
-            <a href="./filters.php" id="filters" class="nav-link text-success">
+            <a href="./filters.php" id="filters" class="nav-link text-white">
                 <i class="fas fa-filter"></i>
             Filters
             </a>
@@ -83,19 +83,19 @@
         </li>
         <?php if(isset($_COOKIE['client']) && $_COOKIE['client']=='false') { ?>
         <li>
-            <a href="./manage_users.php" class="nav-link text-success">
+            <a href="./manage_users.php" class="nav-link text-white">
             <i class="fas fa-user"></i>
             Manage Users
             </a>
         </li>
         <li>
-            <a href="./manage_winery.php" class="nav-link text-success">
+            <a href="./manage_winery.php" class="nav-link text-white">
             <i class="fas fa-wine-glass"></i>
             Manage Wineries
             </a>
         </li>
         <li>
-            <a href="./manage_wines.php" class="nav-link text-success">
+            <a href="./manage_wines.php" class="nav-link text-white">
             <i class="fas fa-wine-bottle"></i>
             Manage Wines
             </a>
@@ -107,13 +107,13 @@
             </a>
         </li>
         <li>
-            <a href="./custom_sql.php" class="nav-link text-success">
+            <a href="./custom_sql.php" class="nav-link text-white">
                 <i class="fas fa-database"></i>
             Manual SQL Query
             </a>
         </li>
         <?php } ?>
-        <li class="m-3">
+        <!-- <li class="m-3">
             <li><h5>Guide</h5></li>
             <li class="text-success">Fully working</li>
             <li class="text-warning">Partially working</li>
@@ -123,7 +123,7 @@
                     <i class="fab fa-github"></i> Issue on Github
                 </a>
             </li>
-        </li>
+        </li> -->
         </ul>
 
         <hr>
@@ -131,11 +131,7 @@
             <div class="dropdown">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-user rounded-circle me-2" width="32" height="32"></i>
-                <?php if ($_COOKIE['client'] == 'true') { ?>
-                    <strong class="text-warning">Client1</strong>
-                <?php } else { ?>
-                    <strong class="text-warning">Manager1</strong>
-                <?php } ?>
+                    <strong class="text-warning"><!-- PHP STATEMENT HERE --></strong>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                 <!-- <li><a class="dropdown-item" href="#">New project...</a></li>
