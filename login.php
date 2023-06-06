@@ -61,8 +61,16 @@
             if($user->num_rows>0){
                 $result = $user->fetch_assoc();
                 $pin = $result['Password'];
+                $id = $result["User_id"];
                 if($pin==$password){
-                    setcookie('client', "true");
+                    $stm = "SELECT * FROM Manager WHERE User_id='$id'";
+                    $manager = $conn->query($stm);
+                    if($manager->num_rows>0){
+                        setcookie('client', "false");
+                    }
+                    else{
+                        setcookie('client', "true");
+                    }
                     header("Location: ./");
                 }
                 else{
