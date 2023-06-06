@@ -1,6 +1,8 @@
 # PA5
 Practical Assignment 5 Group Project
 
+Github Repo: https://github.com/PA5G5/PA5.git
+
 ## 1. How-to
 Our web-based application runs on PHP.
 
