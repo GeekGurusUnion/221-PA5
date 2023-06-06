@@ -195,32 +195,65 @@ function rateWine2(response, wineName) {
 }
 
 function submitRating(rating, ratedWine) {
-    console.log(rating + ' ' + ratedWine);
-    var user_id = getCookie('user_id');
-    if (document.cookie.includes('connoisseur=true')) {
-        var sql = "INSERT INTO Review (User_id, Wine_id, Rating, Review_type) VALUES (" + user_id + ", " + ratedWine + ", " + rating + ", 'false')";
-        console.log(sql);
-        XMLRequest(sql, false, false)
-        .then(console.log("success CLIENT"))
-        .catch(function(error) {
-        console.error(error);
-        // Handle the error here
-        });
-    } 
-    else {
-        var sql = "INSERT INTO Review (User_id, Wine_id, Rating, Review_type) VALUES (" + user_id + ", " + ratedWine + ", " + rating + ", 'true')";
-        console.log(sql);
-        XMLRequest(sql, false, false)
-        .then(console.log("success CONNOISSEUR"))
-        .catch(function(error) {
-        console.error(error);
-        // Handle the error here
-        });
-    }
-    $('#narratModal').modal('hide');
+    var wine_id;
+    var sql = 'SELECT Wine_id FROM Wine WHERE Wine.Name = "' + ratedWine + '";';
+    fetch("./util/reviewApi.php", {
+      method: 'POST',
+      body: JSON.stringify(sql)
+    })
+      .then(resp => resp.json())
+      .then(response => {
+        // console.log(response);
+        wine_id = response[0].Wine_id;
+        var user_id = getCookie('user_id');
+        console.log(rating + ' ' + wine_id + ' ' + user_id);
+        if (document.cookie.includes('connoisseur=true')) {
+            var reviewData = {
+                "user_id" : user_id,
+                "wine_id" : wine_id,
+                "rating" : rating,
+                "review_type" : "Critic"
+            };
+                fetch("./util/addReview.php", {
+                    method: 'POST',
+                    body: JSON.stringify(reviewData)
+                })
+                .then(resp => resp.text())
+                .then(response => {
+                  console.log(response + ' ' + "CONNOISSEUR");
+                  location.reload(true);
+                })
+                .catch(error => {
+                  console.error('Error:', error);
+                });
+        } else {
+            var reviewData = {
+                "user_id" : user_id,
+                "wine_id" : wine_id,
+                "rating" : rating,
+                "review_type" : "General"
+            };
+                fetch("./util/addReview.php", {
+                    method: 'POST',
+                    body: JSON.stringify(reviewData)
+                })
+                .then(resp => resp.text())
+                .then(response => {
+                  console.log(response + ' ' + "USER");
+                  location.reload(true);
+                })
+                .catch(error => {
+                  console.error('Error:', error);
+                });
+        }
+        $('#narratModal').modal('hide');
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
 }
-
-function getCookie(cookieName) {
+  
+  function getCookie(cookieName) {
     var name = cookieName + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var cookieArray = decodedCookie.split(';');
@@ -234,7 +267,7 @@ function getCookie(cookieName) {
       }
     }
     return "";
-}
+  }
 
 function XMLRequest(q, createTable, functions, callback) {
     return new Promise(function(resolve, reject) {
