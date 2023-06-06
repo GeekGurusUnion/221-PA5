@@ -198,35 +198,25 @@ function submitRating(rating, ratedWine) {
     console.log(rating + ' ' + ratedWine);
     var user_id = getCookie('user_id');
     if (document.cookie.includes('connoisseur=true')) {
-        var data = {
-            "type" : "INSERT",
-            "connoisseur" : "true",
-            "ratedWine" : ratedWine,
-            "rating" : rating,
-            "user_id" : user_id
-        }
+        var sql = "INSERT INTO Review (User_id, Wine_id, Rating, Review_type) VALUES (" + user_id + ", " + ratedWine + ", " + rating + ", 'false')";
+        console.log(sql);
+        XMLRequest(sql, false, false)
+        .then(console.log("success CLIENT"))
+        .catch(function(error) {
+        console.error(error);
+        // Handle the error here
+        });
     } 
     else {
-        var data = {
-            "type" : "INSERT",
-            "connoisseur" : "false",
-            "ratedWine" : ratedWine,
-            "rating" : rating,
-            "user_id" : user_id
-        }
+        var sql = "INSERT INTO Review (User_id, Wine_id, Rating, Review_type) VALUES (" + user_id + ", " + ratedWine + ", " + rating + ", 'true')";
+        console.log(sql);
+        XMLRequest(sql, false, false)
+        .then(console.log("success CONNOISSEUR"))
+        .catch(function(error) {
+        console.error(error);
+        // Handle the error here
+        });
     }
-    console.log(data);
-    fetch("./util/addReview.php", {
-        method: 'POST',
-        body: JSON.stringify(data)
-    })
-    .then(response => response.text())
-    .then(result => {
-        console.log(result);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
     $('#narratModal').modal('hide');
 }
 
