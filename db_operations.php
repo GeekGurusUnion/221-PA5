@@ -5,7 +5,7 @@
     <h3>Database Operations</h3>
     <div class="row g-3">
     <div class="col-md-3">
-        <select id="table-select" class="form-select" aria-label="Default select example">
+        <select id="table-select" class="form-select" onchange='clearForm()' aria-label="Default select example">
             <option selected>Select Table</option>
             <option value="User">User</option>
             <option value="Winery">Winery</option>
@@ -19,7 +19,7 @@
     </div>
 
     <div id="form-container">
-        <form id="form" class='row g-3 m-2 bg-dark'></form>
+        <form id="form" class='row g-3 m-2 bg-dark' action=""></form>
     </div>
     
     <!-- </body> -->
