@@ -62,6 +62,9 @@
                 $result = $user->fetch_assoc();
                 $pin = $result['Password'];
                 $id = $result["User_id"];
+                $Fname = $result["First_name"];
+                $Lname = $result["Last_name"];
+                $name = $Fname." ".$Lname;
                 if($pin==$password){
                     $stm = "SELECT * FROM Manager WHERE User_id='$id'";
                     $manager = $conn->query($stm);
@@ -71,6 +74,8 @@
                     else{
                         setcookie('client', "true");
                     }
+                    setcookie("user_id", $id);
+                    setcookie("name", $name);
                     header("Location: ./");
                 }
                 else{
