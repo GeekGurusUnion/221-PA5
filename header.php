@@ -145,7 +145,12 @@
             <div class="dropdown">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-user rounded-circle me-2" width="32" height="32"></i>
-                    <strong class="text-warning"><?php echo $_COOKIE['name'] ?></strong>
+                    <strong><?php echo $_COOKIE['name'] ?></strong>
+                    <?php if(isset($_COOKIE['client']) && $_COOKIE['client']=='false') { ?>
+                        <span class="small badge text-success">Manager</span>
+                    <?php } else { ?>
+                        <span class="small badge text-primary">Client</span>
+                    <?php } ?>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                 <!-- <li><a class="dropdown-item" href="#">New project...</a></li>
