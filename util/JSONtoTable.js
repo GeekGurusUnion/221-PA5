@@ -1,7 +1,10 @@
 function JSONtoTable(obj, functions) {
     // console.log(functions);
     let container = $('#table-container');
-    if (functions === true || functions === 2) {
+    if (functions === true || functions === 1) {
+        $('#table-container').html('<div class="d-flex w-100 justify-content-end mb-3 gap-3"></div>');
+    }
+    else if (functions === true || functions === 2) {
         $('#table-container').html('<div class="d-flex w-100 justify-content-end mb-3 gap-3"><div><button type="button" onclick="XMLRequest(sqlQuery, true, func)" class="btn btn-danger btn-sm mr-3"><i class="fa fa-undo"></i> Revert Changes</button></div><div><button type="button" class="btn btn-success btn-sm" id="confirmBtn" ><i class="fas fa-check"></i> Confirm Changes</button></div></div>');
     }
     $('#table').remove();
@@ -37,6 +40,12 @@ function JSONtoTable(obj, functions) {
         th.text('Review');
         tr.append(th);
     }
+    else{
+        let th = $("<th>");
+        th.attr('colspan', '2');
+        th.text('Review');
+        tr.append(th);
+    }
     thead.append(tr);
 
     table.append(thead);
@@ -58,7 +67,9 @@ function JSONtoTable(obj, functions) {
         var functionsArr = [
             '<button type="button" class="btn btn-warning btn-sm" onclick="editRow(' + x + ')"><i class="fas fa-pen"></i></button>',
             '<button type="button" class="btn btn-danger btn-sm" onclick="deleteRow(' + x + ')"><i class="fas fa-trash"></i></button>',
-            '<button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#narratModal"><i class="fas fa-star"></i> Rate this wine</button>'
+            '<button type="button" class="btn btn-success btn-sm" onclick="rateRow(' + x + ')"><i class="fas fa-star"></i> Rate this wine</button>',
+            '<button id="rem" type="button" class="btn btn-primary btn-sm" onclick="rateWine(' + x + ')"><i class="fas fa-star"></i> Rate this wine</button>'
+
         ]
         if (functions === true) {
             for (var i = 0; i < 2; i++) {
@@ -73,6 +84,12 @@ function JSONtoTable(obj, functions) {
             let td = $("<td>");
             td.attr('id', x)
             td.html(functionsArr[2]);
+            tr.append(td);
+        }
+        else{
+            let td = $("<td>");
+            td.attr('id', x)
+            td.html(functionsArr[3]);
             tr.append(td);
         }
         tbody.append(tr);
@@ -143,6 +160,90 @@ function rateRow(elem) {
         }
     });
 
+}
+
+function rateWine(elem) {
+    var wineName = $('#tr' + elem + ' td:first-child').text();
+    var user_id = getCookie('user_id');
+    var sql = 'SELECT Review.*, Wine.Name AS WineName FROM Review JOIN Wine ON Review.Wine_id = Wine.Wine_id WHERE Review.User_id = "' + user_id + '" AND Wine.Name = "' + wineName + '";';
+    fetch("./util/reviewApi.php", {
+        method: 'POST',
+        body: JSON.stringify(sql)
+    })
+    .then(resp => resp.json())
+    .then(response => {
+        rateWine2(response, wineName);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+function rateWine2(response, wineName) {
+    if (response[0] == undefined){
+        $('#narratModalLabel').html('Rate this bottle of wine:<br>' + wineName);
+        $('#narratModal').modal('show');
+        $('.cashmodal_btn').on('click', function() {
+            var rating = $(this).text(); 
+            submitRating(rating, wineName);
+        });
+    }
+    else {
+        $('#narrat2ModalLabel').html('You have already rated this wine:<br>' + wineName);
+        $('#narrat2Modal').modal('show');
+    }
+}
+
+function submitRating(rating, ratedWine) {
+    console.log(rating + ' ' + ratedWine);
+    var user_id = getCookie('user_id');
+    if (document.cookie.includes('connoisseur=true')) {
+        var data = {
+            "type" : "INSERT",
+            "connoisseur" : "true",
+            "ratedWine" : ratedWine,
+            "rating" : rating,
+            "user_id" : user_id
+        }
+    } 
+    else {
+        var data = {
+            "type" : "INSERT",
+            "connoisseur" : "false",
+            "ratedWine" : ratedWine,
+            "rating" : rating,
+            "user_id" : user_id
+        }
+    }
+    console.log(data);
+    fetch("./util/addReview.php", {
+        method: 'POST',
+        body: JSON.stringify(data)
+    })
+    .then(response => response.text())
+    .then(result => {
+        console.log(result);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+    $('#narratModal').modal('hide');
+}
+
+function getCookie(cookieName) {
+    var name = cookieName + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var cookieArray = decodedCookie.split(';');
+    for (var i = 0; i < cookieArray.length; i++) {
+      var cookie = cookieArray[i];
+      while (cookie.charAt(0) === ' ') {
+        cookie = cookie.substring(1);
+      }
+      if (cookie.indexOf(name) === 0) {
+        return cookie.substring(name.length, cookie.length);
+      }
+    }
+    return "";
 }
 
 function XMLRequest(q, createTable, functions, callback) {
