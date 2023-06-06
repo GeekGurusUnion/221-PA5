@@ -8,12 +8,17 @@ $password = '@PA5_2023';
 $database = 'Practical5';
 
 // Connect to the Google Cloud MySQL instance
-$connection = new mysqli($host, $username, $password, $database);
+try {
+    $connection = new mysqli($host, $username, $password, $database);
 
-// Check the connection
-if ($connection->connect_error) {
-    die("Connection failed: " . $connection->connect_error);
+    if ($connection->connect_error) {
+        throw new Exception("Connection failed: " . $connection->connect_error);
+    }
+
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage();
 }
+
 // else {
 //     echo "Success";
 // }
