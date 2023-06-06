@@ -385,7 +385,7 @@
                 shouldSwitch = false;
                 var x = rows[i].getElementsByTagName("TD")[n];
                 var y = rows[i + 1].getElementsByTagName("TD")[n];
-                if (n==0)//If sorting by first row, IDs need to be cast to int
+                if (n==0 || n==7)//If sorting by first row, IDs need to be cast to int
                 {
                     if (dir == "asc") 
                     {
