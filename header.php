@@ -23,7 +23,7 @@
         <main class="d-flex flex-nowrap">
         <div class="d-flex sidebar-sticky top-0 border border-top-0 border-bottom-0 border-left-0 border-secondary flex-column flex-shrink-0 p-3 text-bg-dark" style="height: 100vh; width: 280px;">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-        <span class="fs-5">Wine Travels</span>
+        <span class="fs-5"><img src="./img/logo.png" height="36" class="mx-2">Wine Travels</span>
         </a>
         <hr>
         <script>
@@ -54,6 +54,20 @@
                 } else {
                     document.cookie = "client = false";
                 }
+            }
+
+            function get_cookie(name){
+                return document.cookie.split(';').some(c => {
+                    return c.trim().startsWith(name + '=');
+                });
+            }
+
+            function signOut() {
+                if(get_cookie("client")) {
+                    document.cookie = "client=" +
+                    ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+                }
+                window.location.href = './login.php';
             }
         </script>
         <ul class="nav nav-pills flex-column mb-auto">
