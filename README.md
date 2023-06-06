@@ -21,8 +21,8 @@ MANAGER:
 - Password: PWD456
 
 CONNOISSEUR:
-- Username: john@example.com
-- Password: ABC123
+- Username: sarah@example.com
+- Password: PASS123
 
 ## Email Addresses & Student Numbers
 Iwan de Jong (u22498037): u22498037@tuks.co.za
