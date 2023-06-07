@@ -29,7 +29,13 @@ function JSONtoTable(obj, functions) {
         th.text(columns[i]);
         tr.append(th);
     }
-    if (functions === true) {
+    if (functions === 1){
+        let th = $("<th>");
+        th.attr('colspan', '2');
+        th.text('Review');
+        tr.append(th);
+    }
+    else if (functions === true) {
         let th = $("<th>");
         th.attr('colspan', '2');
         th.text('Functions');
@@ -40,12 +46,7 @@ function JSONtoTable(obj, functions) {
         th.text('Review');
         tr.append(th);
     }
-    else if (functions === 1){
-        let th = $("<th>");
-        th.attr('colspan', '2');
-        th.text('Review');
-        tr.append(th);
-    }
+    
     thead.append(tr);
 
     table.append(thead);
