@@ -1,7 +1,7 @@
 function JSONtoTable(obj, functions) {
     // console.log(functions);
     let container = $('#table-container');
-    if (functions === true || functions === 1) {
+    if (functions === true && functions === 1) {
         $('#table-container').html('<div class="d-flex w-100 justify-content-end mb-3 gap-3"></div>');
     }
     else if (functions === true || functions === 2) {
@@ -40,7 +40,7 @@ function JSONtoTable(obj, functions) {
         th.text('Review');
         tr.append(th);
     }
-    else{
+    else if (functions === 1){
         let th = $("<th>");
         th.attr('colspan', '2');
         th.text('Review');
@@ -86,7 +86,7 @@ function JSONtoTable(obj, functions) {
             td.html(functionsArr[2]);
             tr.append(td);
         }
-        else{
+        else if (functions === 1){
             let td = $("<td>");
             td.attr('id', x)
             td.html(functionsArr[3]);

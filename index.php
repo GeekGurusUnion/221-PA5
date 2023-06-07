@@ -35,7 +35,7 @@
             <div class="card-body bg-dark text-white rounded border border-secondary p-4 h-100">
                 <h5 class="card-title"><i class="fas fa-star"></i> Review Wine</h5>
                 <p class="card-text text-secondary mt-2">Share your thoughts and experiences by reviewing wines.</p>
-                <a href="#" class="btn btn-primary">Review</a>
+                <a href="./review.php" class="btn btn-primary">Review</a>
             </div>
         </div>
         <div class="col-lg">
