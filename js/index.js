@@ -7,7 +7,9 @@ function formBuilder(res) {
     for (var i = 0; i < inputFields.length; i++) {
         container.innerHTML += "<div class='col-md-4'><label for='" + inputFields[i] + "' class='form-label'>" + inputFields[i] + "</label><input type='text' class='form-control' id='" + inputFields[i] + "'></div>";
     }
-    container.innerHTML += "<div class='col-12'><button type='submit' class='btn btn-primary'>QUERY</button></div>";
+    container.innerHTML += "<div class='col-12'><button type='submit' class='btn btn-primary'>QUERY</button></div><div id='table-container' class='table-responsive table-condensed w-100 justify-content-center'>";
+    var sqlQuery = "SELECT * FROM Wine";
+    XMLRequest(sqlQuery, true, false);
 } 
 
 function filterBuilder(res) {
