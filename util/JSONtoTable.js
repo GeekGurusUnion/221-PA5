@@ -68,9 +68,8 @@ function JSONtoTable(obj, functions) {
         var functionsArr = [
             '<button type="button" class="btn btn-warning btn-sm" onclick="editRow(' + x + ')"><i class="fas fa-pen"></i></button>',
             '<button type="button" class="btn btn-danger btn-sm" onclick="deleteRow(' + x + ')"><i class="fas fa-trash"></i></button>',
-            '<button type="button" class="btn btn-success btn-sm" onclick="rateRow(' + x + ')"><i class="fas fa-star"></i> Rate this wine</button>',
+            // '<button type="button" class="btn btn-success btn-sm" onclick="rateRow(' + x + ')"><i class="fas fa-star"></i> Rate this wine</button>',
             '<button id="rem" type="button" class="btn btn-primary btn-sm" onclick="rateWine(' + x + ')"><i class="fas fa-star"></i> Rate this wine</button>'
-
         ]
         if (functions === true) {
             for (var i = 0; i < 2; i++) {
@@ -90,7 +89,7 @@ function JSONtoTable(obj, functions) {
         else if (functions === 1){
             let td = $("<td>");
             td.attr('id', x)
-            td.html(functionsArr[3]);
+            td.html(functionsArr[2]);
             tr.append(td);
         }
         tbody.append(tr);

@@ -1,16 +1,16 @@
-function formBuilder(res) {
-    console.log(res);
-    var inputFields = Object.keys(res[0]);
-    console.log(inputFields);
-    var container = document.getElementById('form');
-    container.innerHTML = "<div class='col-md-4'><label for='form-select' class='form-label text-warning'>Select type of SQL Query</label><select id='form-select' class='form-select' aria-label='Default select example'><option selected>Select Operation</option><option value='INSERT'>INSERT</option><option value='UPDATE'>UPDATE</option><option value='DELETE'>DELETE</option></select></div>";
-    for (var i = 0; i < inputFields.length; i++) {
-        container.innerHTML += "<div class='col-md-4'><label for='" + inputFields[i] + "' class='form-label'>" + inputFields[i] + "</label><input type='text' class='form-control' id='" + inputFields[i] + "'></div>";
-    }
-    container.innerHTML += "<div class='col-12'><button type='submit' class='btn btn-primary'>QUERY</button></div><div id='table-container' class='table-responsive table-condensed w-100 justify-content-center'>";
-    var sqlQuery = "SELECT * FROM Wine";
-    XMLRequest(sqlQuery, true, false);
-} 
+// function formBuilder(res) {
+//     console.log(res);
+//     var inputFields = Object.keys(res[0]);
+//     console.log(inputFields);
+//     var container = document.getElementById('form');
+//     container.innerHTML = "<div class='col-md-4'><label for='form-select' class='form-label text-warning'>Select type of SQL Query</label><select id='form-select' class='form-select' aria-label='Default select example'><option selected>Select Operation</option><option value='INSERT'>INSERT</option><option value='UPDATE'>UPDATE</option><option value='DELETE'>DELETE</option></select></div>";
+//     for (var i = 0; i < inputFields.length; i++) {
+//         container.innerHTML += "<div class='col-md-4'><label for='" + inputFields[i] + "' class='form-label'>" + inputFields[i] + "</label><input type='text' class='form-control' id='" + inputFields[i] + "'></div>";
+//     }
+//     container.innerHTML += "<div class='col-12'><button type='submit' class='btn btn-primary'>QUERY</button></div><div id='table-container' class='table-responsive table-condensed w-100 justify-content-center'>";
+//     var sqlQuery = "SELECT * FROM Wine";
+//     XMLRequest(sqlQuery, true, false);
+// } 
 
 function filterBuilder(res) {
     // console.log(res);
@@ -24,18 +24,19 @@ function filterBuilder(res) {
     }
 } 
 
-function loadForm() {
-    var table = document.getElementById('table-select');
-    var str = "SELECT * FROM " + table.value;
-    XMLRequest(str, false, false)
-    .then(formBuilder)
-    .catch(function(error) {
-      console.error(error);
-      // Handle the error here
-    });
-    // var inputFields = Object.keys(obj);
-    // console.log(inputFields);
-} 
+// function loadForm() {
+//     var table = document.getElementById('table-select');
+//     var str = "SELECT * FROM " + table.value;
+//     console.log(str);
+//     XMLRequest(str, false, false)
+//     .then(formBuilder)
+//     .catch(function(error) {
+//       console.error(error);
+//       // Handle the error here
+//     });
+//     // var inputFields = Object.keys(obj);
+//     // console.log(inputFields);
+// } 
 
 function loadAttributes() {
     var table = document.getElementById('table-select');
@@ -65,7 +66,8 @@ function loadList() {
     });
 }
 
-function formBuilder(res) {
+function formBuilder(res, str) {
+  console.log(str);
   console.log(res);
   var inputFields = Object.keys(res[0]);
   console.log(inputFields);
@@ -94,7 +96,8 @@ function formBuilder(res) {
     wid.style.display = "none";
   }
   container.innerHTML +=
-    "<div class='col-12'><button type='submit' onclick='queryBuilder(event)' class='btn btn-primary'>QUERY</button></div>";
+    "<div class='col-12'><button type='submit' onclick='queryBuilder(event)' class='btn btn-primary'>QUERY</button></div><div id='table-container' class='table-responsive table-condensed w-100 justify-content-center'>";
+    XMLRequest(str, true, false);
 }
 
 function checkType() {
@@ -721,7 +724,9 @@ function loadForm() {
   var table = document.getElementById("table-select");
   var str = "SELECT * FROM " + table.value;
   XMLRequest(str, false)
-    .then(formBuilder)
+    .then(function(response) {
+      formBuilder(response, str);
+    })
     .catch(function (error) {
       console.error(error);
       // Handle the error here
