@@ -74,7 +74,21 @@ function formBuilder(res, str) {
   var container = document.getElementById("form");
   container.innerHTML +=
     "<div class='col-md-4'><label for='form-select' class='form-label text-warning'>Select type of SQL Query</label><select id='form-select' class='form-select' onchange='checkType()' aria-label='Default select example'><option selected>Select Operation</option><option value='INSERT'>INSERT</option><option value='UPDATE'>UPDATE</option><option value='DELETE'>DELETE</option></select></div>";
-  for (var i = 0; i < inputFields.length; i++) {
+    var type = document.getElementById("table-select").value;
+    if (type === "Review"){
+      for (var i = 1; i < inputFields.length; i++) {
+          container.innerHTML +=
+            "<div class='col-md-4'><label for='" +
+            inputFields[i] +
+            "' class='form-label'>" +
+            inputFields[i] +
+            "</label><input type='text' class='form-control' id='" +
+            inputFields[i] +
+            "'></div>";
+        }
+  }
+  else {
+    for (var i = 0; i < inputFields.length; i++) {
     container.innerHTML +=
       "<div class='col-md-4'><label for='" +
       inputFields[i] +
@@ -84,8 +98,9 @@ function formBuilder(res, str) {
       inputFields[i] +
       "'></div>";
   }
+}
 
-  var type = document.getElementById("table-select").value;
+  
 
   if (type == "User") {
     container.innerHTML +=
