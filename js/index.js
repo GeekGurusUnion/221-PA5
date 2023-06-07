@@ -24,18 +24,19 @@ function filterBuilder(res) {
     }
 } 
 
-function loadForm() {
-    var table = document.getElementById('table-select');
-    var str = "SELECT * FROM " + table.value;
-    XMLRequest(str, false, false)
-    .then(formBuilder)
-    .catch(function(error) {
-      console.error(error);
-      // Handle the error here
-    });
-    // var inputFields = Object.keys(obj);
-    // console.log(inputFields);
-} 
+// function loadForm() {
+//     var table = document.getElementById('table-select');
+//     var str = "SELECT * FROM " + table.value;
+//     console.log(str);
+//     XMLRequest(str, false, false)
+//     .then(formBuilder)
+//     .catch(function(error) {
+//       console.error(error);
+//       // Handle the error here
+//     });
+//     // var inputFields = Object.keys(obj);
+//     // console.log(inputFields);
+// } 
 
 function loadAttributes() {
     var table = document.getElementById('table-select');
@@ -65,7 +66,8 @@ function loadList() {
     });
 }
 
-function formBuilder(res) {
+function formBuilder(res, str) {
+  console.log(str);
   console.log(res);
   var inputFields = Object.keys(res[0]);
   console.log(inputFields);
@@ -94,7 +96,8 @@ function formBuilder(res) {
     wid.style.display = "none";
   }
   container.innerHTML +=
-    "<div class='col-12'><button type='submit' onclick='queryBuilder(event)' class='btn btn-primary'>QUERY</button></div>";
+    "<div class='col-12'><button type='submit' onclick='queryBuilder(event)' class='btn btn-primary'>QUERY</button></div><div id='table-container' class='table-responsive table-condensed w-100 justify-content-center'>";
+    XMLRequest(str, true, false);
 }
 
 function checkType() {
@@ -721,7 +724,9 @@ function loadForm() {
   var table = document.getElementById("table-select");
   var str = "SELECT * FROM " + table.value;
   XMLRequest(str, false)
-    .then(formBuilder)
+    .then(function(response) {
+      formBuilder(response, str);
+    })
     .catch(function (error) {
       console.error(error);
       // Handle the error here

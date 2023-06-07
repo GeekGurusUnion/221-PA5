@@ -91,7 +91,7 @@
         </li>
         <?php if(isset($_COOKIE['client']) && $_COOKIE['client']=='true') { ?>
         <li>
-            <a href="./review.php" class="nav-link text-warning">
+            <a href="./review.php" class="nav-link text-white">
                 <i class="fas fa-star"></i>
             Review Wine
             </a>
@@ -117,7 +117,7 @@
             </a>
         </li>
         <li>
-            <a href="./db_operations.php" class="nav-link text-warning">
+            <a href="./db_operations.php" class="nav-link text-white">
             <i class="fas fa-cog"></i>  
             Database Operations
             </a>

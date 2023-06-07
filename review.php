@@ -7,34 +7,47 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script>
-        var sqlQuery =  "SELECT\
-                            Wines.Name,\
-                            AVGReviews.avgrating,\
-                            Winery.Name AS WineryName\
-                        FROM\
-                            (\
-                                SELECT\
-                                    Wine_id,\
-                                    AVG(rating) AS avgrating\
-                                FROM\
-                                    Review\
-                                GROUP BY\
-                                    Wine_id\
-                            ) AS AVGReviews\
-                        INNER JOIN\
-                            (\
-                                SELECT\
-                                    Wine_id,\
-                                    Name,\
-                                    Winery_id\
-                                FROM\
-                                    Wine\
-                                GROUP BY\
-                                    Wine_id,\
-                                    Winery_id\
-                            ) AS Wines ON AVGReviews.Wine_id = Wines.Wine_id\
-                        INNER JOIN\
-                            Winery ON Wines.Winery_id = Winery.Winery_id";
+        var sqlQuery =  "SELECT \
+    Wines.Name, \
+    Winery.Name AS WineryName,\
+    ROUND(AVGReviews.avgrating,2) AS AverageRating, \
+    ROUND(AVGConReviews.avgrating,2) AS AverageConnoisseurRating \
+FROM \
+    ( \
+        SELECT \
+            Wine_id, \
+            AVG(rating) AS avgrating \
+        FROM \
+            Review \
+        GROUP BY \
+            Wine_id \
+    ) AS AVGReviews \
+INNER JOIN \
+    ( \
+        SELECT \
+            Wine_id, \
+            Name, \
+            Winery_id \
+        FROM \
+            Wine \
+        GROUP BY \
+            Wine_id, \
+            Winery_id \
+    ) AS Wines ON AVGReviews.Wine_id = Wines.Wine_id \
+INNER JOIN \
+    Winery ON Wines.Winery_id = Winery.Winery_id \
+LEFT JOIN \
+	( \
+        SELECT \
+            Wine_id, \
+            AVG(rating) AS avgrating \
+        FROM \
+            Review \
+		WHERE \
+			Review_type = 'Critic' \
+        GROUP BY \
+            Wine_id \
+    ) AS AVGConReviews ON AVGConReviews.Wine_id = Wines.Wine_id;"
 
 
         var func = 1;
