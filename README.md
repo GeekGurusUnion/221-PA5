@@ -27,7 +27,7 @@ Below, you'll find the login details for our three user types:
 
 USER:
 - Username: john@example.com
-- Password: ABC123
+- Password: password123
 
 MANAGER:
 - Username: michael@example.com
